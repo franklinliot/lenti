@@ -2,11 +2,9 @@ from bs4 import BeautifulSoup
 import requests 
 import pandas as pd
 
-filename = "computerRank10.csv"
-
-html_text = requests.get("https://www.lenstore.fr/c1/lentilles-journalieres").text
+html_text = requests.get("https://www.malentille.com/36-journaliere-36").text
 soup = BeautifulSoup(html_text, 'lxml')
-jobs = soup.find_all("h3", class_ ="c-product-list__title")
+jobs = soup.find_all("h3")
 
 npo_jobs = {}
 jobs_no = 0
@@ -19,4 +17,4 @@ for index, job in enumerate(jobs):
 
 npo_jobs_df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=['Nom'])
 
-npo_jobs_df.to_csv('npo_jobs.csv')
+npo_jobs_df.to_csv('csv/MalentilleDaily.csv')
