@@ -1,40 +1,40 @@
-,Nom
-1,Dailies Total 1
-2,ACUVUE OASYS 1 Day
-3,1 Day ACUVUE MOIST
-4,1 Day ACUVUE MOIST for Astigmatism
-5,1 Day ACUVUE MOIST
-6,1 Day ACUVUE MOIST Multifocal
-7,ACUVUE OASYS 1 Day for Astigmatism
-8,Dailies Total 1 Multifocal
-9,Dailies AquaComfort Plus Multifocal
-10,Dailies AquaComfort Plus
-11,ACUVUE OASYS 1 Day
-12,Dailies AquaComfort Plus Toric
-13,Dailies AquaComfort Plus
-14,Dailies Total 1
-15,Clariti 1 Day Multifocal
-16,Soflens Daily Disposable
-17,Proclear 1 Day
-18,MyDay
-19,1 Day ACUVUE TruEye
-20,Biotrue ONEday
-21,Clariti 1 Day Toric
-22,Biotrue ONEday for Presbyopia
-23,Clariti 1 Day
-24,Focus Dailies All Day Comfort
-25,Freshlook One Day
-26,Soflens Daily Disposable
-27,Biotrue ONEday
-28,MyDay Toric
-29,1 Day ACUVUE TruEye
-30,Focus Dailies All Day Comfort
-31,Soflens Daily Disposable Toric
-32,Biotrue ONEday for Astigmatism
-33,MyDay
-34,Proclear 1 Day
-35,Biomedics 1 Day Extra
-36,Biomedics 1 Day Extra Toric
-37,Freshlook Illuminate
-38,Live 1 Day
-39,Miru 1day Flat Pack
+,nomProduitAdjusted,prixProduitAdjusted,lienAchat,revendeur
+1,Dailies Total 1,"65,99€",https://www.lenstore.fr/lentilles-de-contact/p251/dailies-total-1-90,LenStore
+2,ACUVUE OASYS 1 Day,"62,09€",https://www.lenstore.fr/lentilles-de-contact/p459/acuvue-oasys-1-day-90,LenStore
+3,1 Day ACUVUE MOIST,"46,99€",https://www.lenstore.fr/lentilles-de-contact/p14/1-day-acuvue-moist-90,LenStore
+4,1 Day ACUVUE MOIST for Astigmatism,"22,19€",https://www.lenstore.fr/lentilles-de-contact/p106/1-day-acuvue-moist-for-astigmatism,LenStore
+5,1 Day ACUVUE MOIST,"16,49€",https://www.lenstore.fr/lentilles-de-contact/p13/1-day-acuvue-moist,LenStore
+6,1 Day ACUVUE MOIST Multifocal,"30,19€",https://www.lenstore.fr/lentilles-de-contact/p250/1-day-acuvue-moist-multifocal,LenStore
+7,ACUVUE OASYS 1 Day for Astigmatism,"28,39€",https://www.lenstore.fr/lentilles-de-contact/p468/acuvue-oasys-1-day-for-astigmatism,LenStore
+8,Dailies Total 1 Multifocal,"36,79€",https://www.lenstore.fr/lentilles-de-contact/p457/dailies-total-1-multifocal,LenStore
+9,Dailies AquaComfort Plus Multifocal,"27,99€",https://www.lenstore.fr/lentilles-de-contact/p234/dailies-aquacomfort-plus-multifocal,LenStore
+10,Dailies AquaComfort Plus,"48,29€",https://www.lenstore.fr/lentilles-de-contact/p6/dailies-aquacomfort-plus-90,LenStore
+11,ACUVUE OASYS 1 Day,"24,59€",https://www.lenstore.fr/lentilles-de-contact/p458/acuvue-oasys-1-day,LenStore
+12,Dailies AquaComfort Plus Toric,"23,39€",https://www.lenstore.fr/lentilles-de-contact/p233/dailies-aquacomfort-plus-toric,LenStore
+13,Dailies AquaComfort Plus,"16,19€",https://www.lenstore.fr/lentilles-de-contact/p5/dailies-aquacomfort-plus,LenStore
+14,Dailies Total 1,"25,69€",https://www.lenstore.fr/lentilles-de-contact/p225/dailies-total-1,LenStore
+15,Clariti 1 Day Multifocal,"24,29€",https://www.lenstore.fr/lentilles-de-contact/p217/clariti-1-day-multifocal,LenStore
+16,Soflens Daily Disposable,"29,59€",https://www.lenstore.fr/lentilles-de-contact/p2/soflens-daily-disposable-90,LenStore
+17,Proclear 1 Day,"35,99€",https://www.lenstore.fr/lentilles-de-contact/p84/proclear-1-day-90,LenStore
+18,MyDay,"59,79€",https://www.lenstore.fr/lentilles-de-contact/p252/myday-90,LenStore
+19,1 Day ACUVUE TruEye,"55,39€",https://www.lenstore.fr/lentilles-de-contact/p104/1-day-acuvue-trueye-90,LenStore
+20,Biotrue ONEday,"42,49€",https://www.lenstore.fr/lentilles-de-contact/p227/biotrue-oneday-90,LenStore
+21,Clariti 1 Day Toric,"27,39€",https://www.lenstore.fr/lentilles-de-contact/p218/clariti-1-day-toric,LenStore
+22,Biotrue ONEday for Presbyopia,"23,99€",https://www.lenstore.fr/lentilles-de-contact/p235/biotrue-oneday-for-presbyopia,LenStore
+23,Clariti 1 Day,"22,89€",https://www.lenstore.fr/lentilles-de-contact/p219/clariti-1-day,LenStore
+24,Focus Dailies All Day Comfort,"46,59€",https://www.lenstore.fr/lentilles-de-contact/p7/focus-dailies-all-day-comfort-90,LenStore
+25,Freshlook One Day,"10,89€",https://www.lenstore.fr/lentilles-de-contact/p96/freshlook-one-day,LenStore
+26,Soflens Daily Disposable,"11,09€",https://www.lenstore.fr/lentilles-de-contact/p1/soflens-daily-disposable,LenStore
+27,Biotrue ONEday,"16,69€",https://www.lenstore.fr/lentilles-de-contact/p226/biotrue-oneday,LenStore
+28,MyDay Toric,"33,49€",https://www.lenstore.fr/lentilles-de-contact/p470/myday-toric,LenStore
+29,1 Day ACUVUE TruEye,"20,89€",https://www.lenstore.fr/lentilles-de-contact/p76/1-day-acuvue-trueye,LenStore
+30,Focus Dailies All Day Comfort,"15,59€",https://www.lenstore.fr/lentilles-de-contact/p8/focus-dailies-all-day-comfort,LenStore
+31,Soflens Daily Disposable Toric,"16,69€",https://www.lenstore.fr/lentilles-de-contact/p88/soflens-daily-disposable-toric,LenStore
+32,Biotrue ONEday for Astigmatism,"22,29€",https://www.lenstore.fr/lentilles-de-contact/p480/biotrue-oneday-for-astigmatism,LenStore
+33,MyDay,"22,29€",https://www.lenstore.fr/lentilles-de-contact/p230/myday,LenStore
+34,Proclear 1 Day,"13,29€",https://www.lenstore.fr/lentilles-de-contact/p60/proclear-1-day,LenStore
+35,Biomedics 1 Day Extra,"12,19€",https://www.lenstore.fr/lentilles-de-contact/p200/biomedics-1-day-extra,LenStore
+36,Biomedics 1 Day Extra Toric,"20,39€",https://www.lenstore.fr/lentilles-de-contact/p57/biomedics-1-day-extra-toric,LenStore
+37,Freshlook Illuminate,"16,69€",https://www.lenstore.fr/lentilles-de-contact/p196/freshlook-illuminate,LenStore
+38,Live 1 Day,"17,79€",https://www.lenstore.fr/lentilles-de-contact/p483/live-1-day,LenStore
+39,Miru 1day Flat Pack,"25,79€",https://www.lenstore.fr/lentilles-de-contact/p488/miru-1day-flat,LenStore

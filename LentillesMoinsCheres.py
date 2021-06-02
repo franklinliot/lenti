@@ -18,12 +18,14 @@ for job in jobs:
 
     lienAchat = job.h3.a['href']
 
+    revendeur = "LentillesMoinsCheres"
+
     jobs_no +=1
-    npo_jobs[jobs_no]= [nomProduitAdjusted, prixProduitAdjusted, lienAchat]
+    npo_jobs[jobs_no]= [nomProduitAdjusted, prixProduitAdjusted, lienAchat, revendeur]
     
-    print('nomProduitAdjusted', nomProduitAdjusted, '\nprixProduitAdjuste', prixProduitAdjusted, '\lienAchat', lienAchat)
+    print('nomProduitAdjusted', nomProduitAdjusted, '\nprixProduitAdjusted', prixProduitAdjusted, '\nlienAchat', lienAchat, '\nrevendeur', revendeur)
 
 
-npo_jobs_df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=['nomProduitAdjusted', 'prixProduitAdjusted', 'lienAchat'])
+npo_jobs_df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=['nomProduitAdjusted', 'prixProduitAdjusted', 'lienAchat', 'revendeur'])
 
 npo_jobs_df.to_csv('csv/LentillesMoinsCheresDaily.csv')
