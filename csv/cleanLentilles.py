@@ -29,3 +29,4 @@ with open("/home/franklin/coding/projets_persos/lenti/csv/cleanLentilles.csv", '
 
 
 
+
