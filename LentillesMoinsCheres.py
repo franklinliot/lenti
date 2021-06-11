@@ -2,6 +2,11 @@ from bs4 import BeautifulSoup
 import requests 
 import pandas as pd
 
+nomProduitAdjusted = ""
+marque = ""
+prix90 = ""
+originalName = ""
+
 html_text = requests.get("https://www.lentillesmoinscheres.com/lentilles-de-contact/journalieres/").text
 soup = BeautifulSoup(html_text, 'lxml')
 jobs = soup.find_all("li", class_ = "type-LENS")
@@ -9,23 +14,59 @@ jobs = soup.find_all("li", class_ = "type-LENS")
 npo_jobs = {}
 jobs_no = 0
 
+
 for job in jobs:
     nomProduit = job.find("h3", class_ = "product-title")
     nomProduitAdjusted = nomProduit.text.replace("</a>", "")
 
-    prixProduit = job.find("div", class_ = "price")
-    prixProduitAdjusted = prixProduit.text.replace("</a>", "")
+    if (nomProduitAdjusted.find('Acuvue') != -1 or nomProduitAdjusted.find('ACUVUE') != -1):
+        marque = "Acuvue"
+    elif (nomProduitAdjusted.find('Biomedics') != -1):
+        marque = "Biomedics"
+    elif (nomProduitAdjusted.find('Clariti') != -1):
+        marque = "Clariti"
+    elif (nomProduitAdjusted.find('Dailies') != -1):
+        marque = "Dailies"
+    elif (nomProduitAdjusted.find('Soflens') != -1):
+        marque = "Soflens"
+    elif (nomProduitAdjusted.find('everClear') != -1):
+        marque = "everClear"
+    elif (nomProduitAdjusted.find('Proclear') != -1):
+        marque = "Proclear"
+    else: 
+        marque = "something else"
 
-    lienAchat = job.h3.a['href']
+    prixProduit = job.find("div", class_ = "price")
+    prix30 = prixProduit.text.replace("</a>", "")
+
+    lienAchat = "lentillesmoinscheres.com" + job.h3.a['href']
 
     revendeur = "LentillesMoinsCheres"
 
+
+    if (nomProduitAdjusted.find('(90)') != -1 or nomProduitAdjusted.find('90') != -1):
+        prix90 = "seulement 30"
+        originalName = nomProduitAdjusted
+    else : 
+        prix90 = "bien 90"
+        originalName = nomProduitAdjusted
+
+
     jobs_no +=1
-    npo_jobs[jobs_no]= [nomProduitAdjusted, prixProduitAdjusted, lienAchat, revendeur]
+    npo_jobs[jobs_no]= [nomProduitAdjusted, marque, prix30, lienAchat, revendeur, prix90, originalName]
     
-    print('nomProduitAdjusted', nomProduitAdjusted, '\nprixProduitAdjusted', prixProduitAdjusted, '\nlienAchat', lienAchat, '\nrevendeur', revendeur)
+df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=['nomProduitAdjusted', 'marque', 'prix30', 'lienAchat', 'revendeur', 'prix90', "originalName"])
 
+df['prix30'] = df['prix30'].str.replace("€","")
 
-npo_jobs_df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=['nomProduitAdjusted', 'prixProduitAdjusted', 'lienAchat', 'revendeur'])
+df['prix30'] = df['prix30'].str.strip()
 
-npo_jobs_df.to_csv('csv/LentillesMoinsCheresDaily.csv')
+df['prix30'] = df['prix30'].str.slice(start=-5)
+
+# While loop to shorten originalName
+#df['originalName'] = df['originalName'].str.slice(stop=-7)
+
+print(df.iloc[5]['originalName'])
+
+df.to_csv('/home/franklin/coding/projets_persos/lenti/csv/LentillesMoinsCheresDaily.csv', index=False)
+
