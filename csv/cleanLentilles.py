@@ -1,13 +1,13 @@
 import csv
 
-my_file_name = "/home/franklin/coding/projets_persos/lenti/csv/LentillesMoinsCheresDaily.csv"
-cleaned_file = "/home/franklin/coding/projets_persos/lenti/csv/cleanLentilles.csv"
+my_file_name = "/home/franklin/coding/lenti/csv/LentillesMoinsCheresDaily.csv"
+cleaned_file = "/home/franklin/coding/lenti/csv/cleanLentilles.csv"
 members = "something else"
 
 
 lines = list()
 
-with open("/home/franklin/coding/projets_persos/lenti/csv/LentillesMoinsCheresDaily.csv", 'r') as readFile:
+with open("/home/franklin/coding/lenti/csv/LentillesMoinsCheresDaily.csv", 'r') as readFile:
 
     reader = csv.reader(readFile)
 
@@ -21,7 +21,7 @@ with open("/home/franklin/coding/projets_persos/lenti/csv/LentillesMoinsCheresDa
 
                 lines.remove(row)
 
-with open("/home/franklin/coding/projets_persos/lenti/csv/cleanLentilles.csv", 'w') as writeFile:
+with open("/home/franklin/coding/lenti/csv/cleanLentilles.csv", 'w') as writeFile:
 
     writer = csv.writer(writeFile)
 
