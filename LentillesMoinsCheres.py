@@ -1,11 +1,13 @@
 from bs4 import BeautifulSoup
 import requests 
 import pandas as pd
+import numpy as np
+
 
 nomProduitAdjusted = ""
 marque = ""
 prix90 = ""
-originalName = ""
+originalName = "" 
 
 html_text = requests.get("https://www.lentillesmoinscheres.com/lentilles-de-contact/journalieres/").text
 soup = BeautifulSoup(html_text, 'lxml')
@@ -13,6 +15,7 @@ jobs = soup.find_all("li", class_ = "type-LENS")
 
 npo_jobs = {}
 jobs_no = 0
+arr = np.array(["(90)", "(30)", "(180)", "6", "(6)", "90", "30", "60"])
 
 
 for job in jobs:
@@ -43,17 +46,16 @@ for job in jobs:
 
     revendeur = "LentillesMoinsCheres"
 
-
+    jobs_no +=1
+    npo_jobs[jobs_no]= [nomProduitAdjusted, marque, prix30, lienAchat, revendeur, prix90, originalName]
+    
+    # While loop to shorten originalNamelec
     if (nomProduitAdjusted.find('(90)') != -1 or nomProduitAdjusted.find('90') != -1):
         prix90 = "seulement 30"
         originalName = nomProduitAdjusted
     else : 
         prix90 = "bien 90"
         originalName = nomProduitAdjusted
-
-
-    jobs_no +=1
-    npo_jobs[jobs_no]= [nomProduitAdjusted, marque, prix30, lienAchat, revendeur, prix90, originalName]
     
 df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=['nomProduitAdjusted', 'marque', 'prix30', 'lienAchat', 'revendeur', 'prix90', "originalName"])
 
@@ -63,10 +65,11 @@ df['prix30'] = df['prix30'].str.strip()
 
 df['prix30'] = df['prix30'].str.slice(start=-5)
 
-# While loop to shorten originalName
-#df['originalName'] = df['originalName'].str.slice(stop=-7)
+
+
+
 
 print(df.iloc[5]['originalName'])
 
-df.to_csv('/home/franklin/coding/projets_persos/lenti/csv/LentillesMoinsCheresDaily.csv', index=False)
+df.to_csv('/home/franklin/coding/lenti/csv/LentillesMoinsCheresDaily.csv', index=False)
 
