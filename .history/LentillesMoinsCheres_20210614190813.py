@@ -62,7 +62,7 @@ for job in jobs:
 df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
     'marque', 'nom_Produit', 'LMC30', 'LMC90', 'lienAchat'])
 
-df['LMC30'] = df['LMC30'].str.replace("€", "")
+df['LMC'] = df['LMC30'].str.replace("€", "")
 
 df['LMC30'] = df['LMC30'].str.strip()
 
@@ -82,7 +82,7 @@ print(df.iloc[0])
 
 
 df_products = pd.DataFrame.from_dict(df)
-list_ids = df_products.LMC30.tolist()
+list_ids = df_products.id.tolist()
 df_products = df_products.to_html(index=False, table_id="sellers_table-id", render_links=True,escape=False)
 
 

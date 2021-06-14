@@ -62,11 +62,11 @@ for job in jobs:
 df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
     'marque', 'nom_Produit', 'LMC30', 'LMC90', 'lienAchat'])
 
-df['LMC30'] = df['LMC30'].str.replace("€", "")
+df['LMC'] = df['LMC30'].str.replace("€", "")
 
 df['LMC30'] = df['LMC30'].str.strip()
 
-df['LMC30'] = df['LMC30'].str.slice(start=-5)
+#df['LMC30'] = df['LMC30'].str.slice(start=-5)
 
 df = df[~df['marque'].isin(['something else'])]
 

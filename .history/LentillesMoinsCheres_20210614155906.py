@@ -7,8 +7,7 @@ import numpy as np
 nom_Produit = ""
 marque = ""
 LMC90 = ""
-originalid = ""
-listProduits = ["ACUVUE Moist Multifocal", "Acuvue Oasys with Hydraclear Plus"]
+originalName = ""
 
 html_text = requests.get(
     "https://www.lentillesmoinscheres.com/lentilles-de-contact/journalieres/").text
@@ -44,46 +43,41 @@ for job in jobs:
     prixProduit = job.find("div", class_="price")
     id = prixProduit.text.replace("</a>", "")
 
-    lienAchat = "https://www.lentillesmoinscheres.com" + job.h3.a['href']
+    # lienAchat = "https://lentillesmoinscheres.com" + job.h3.a['href']
+    lienAchat = "https://lentillesmoinscheres.com" + job.h3.a['href']
     lienAchat = lienAchat
     jobs_no += 1
     npo_jobs[jobs_no] = [marque, nom_Produit,
-                         id, LMC90, lienAchat]
+                         id, lienAchat, LMC90]
 
-    # While loop to shorten originalidlec
+    # While loop to shorten originalNamelec
     if (nom_Produit.find('(90)') != -1 or nom_Produit.find('90') != -1):
         LMC90 = "seulement 30"
-        originalid = nom_Produit
+        originalName = nom_Produit
     else:
         LMC90 = "bien 90"
-        originalid = nom_Produit
-
+        originalName = nom_Produit
 
 df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
-    'marque', 'nom_Produit', 'LMC30', 'LMC90', 'lienAchat'])
+    'marque', 'nom_Produit', 'id', 'lienAchat', 'LMC90'])
 
-df['LMC30'] = df['LMC30'].str.replace("€", "")
+df['id'] = df['id'].str.replace("€", "")
 
-df['LMC30'] = df['LMC30'].str.strip()
+df['id'] = df['id'].str.strip()
 
-df['LMC30'] = df['LMC30'].str.slice(start=-5)
+df['id'] = df['id'].str.slice(start=-5)
 
 df = df[~df['marque'].isin(['something else'])]
 
-df['nom_Produit'] = df['nom_Produit'].str.replace('ACUVUE','Acuvue')
-
-
-def make_clickable(lienAchat, id):
-    return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchat,id)
-
-df['LMC30'] = df.apply(lambda x: make_clickable(x['lienAchat'], x['LMC30']), axis=1)
-
-print(df.iloc[0])
-
 
 df_products = pd.DataFrame.from_dict(df)
-list_ids = df_products.LMC30.tolist()
+list_ids = df_products.id.tolist()
 df_products = df_products.to_html(index=False, table_id="sellers_table-id", render_links=True,escape=False)
+for id in list_ids:
+    df_products = df_products.replace(
+        '<td>{0}</td>'.format(id),
+        '''<td><a href="../../link/to/google.fr" target="_blank">{id}</a></td>'''.format(id=id)
+    )
 
 
 text_file = open("/home/franklin/coding/lenti/data/LentMCheres/LentMCheres.html", "w")
@@ -98,3 +92,5 @@ list_of_lines[0] = "<table id=\"myTable\">\n"
 a_file = open("/home/franklin/coding/lenti/data/LentMCheres/LentMCheres.html", "w")
 a_file.writelines(list_of_lines)
 a_file.close()
+
+#df.to_csv(r'/home/franklin/coding/lenti/data/LentMCheres/LentMCheres.csv', index=False)

@@ -66,7 +66,7 @@ df['LMC30'] = df['LMC30'].str.replace("€", "")
 
 df['LMC30'] = df['LMC30'].str.strip()
 
-df['LMC30'] = df['LMC30'].str.slice(start=-5)
+#df['LMC30'] = df['LMC30'].str.slice(start=-5)
 
 df = df[~df['marque'].isin(['something else'])]
 
