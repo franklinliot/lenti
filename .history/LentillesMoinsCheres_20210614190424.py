@@ -42,13 +42,13 @@ for job in jobs:
         marque = "something else"
 
     prixProduit = job.find("div", class_="price")
-    id = prixProduit.text.replace("</a>", "")
+    lmc30 = prixProduit.text.replace("</a>", "")
 
     lienAchat = "https://www.lentillesmoinscheres.com" + job.h3.a['href']
     lienAchat = lienAchat
     jobs_no += 1
     npo_jobs[jobs_no] = [marque, nom_Produit,
-                         id, LMC90, lienAchat]
+                         lmc30, LMC90, lienAchat]
 
     # While loop to shorten originalidlec
     if (nom_Produit.find('(90)') != -1 or nom_Produit.find('90') != -1):
@@ -58,31 +58,30 @@ for job in jobs:
         LMC90 = "bien 90"
         originalid = nom_Produit
 
-
 df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
-    'marque', 'nom_Produit', 'LMC30', 'LMC90', 'lienAchat'])
+    'marque', 'nom_Produit', 'lmc30', 'LMC90', 'lienAchat'])
 
-df['LMC30'] = df['LMC30'].str.replace("€", "")
+df['lmc30'] = df['lmc30'].str.replace("€", "")
 
-df['LMC30'] = df['LMC30'].str.strip()
+df['lmc30'] = df['lmc30'].str.strip()
 
-df['LMC30'] = df['LMC30'].str.slice(start=-5)
+df['lmc30'] = df['lmc30'].str.slice(start=-5)
 
 df = df[~df['marque'].isin(['something else'])]
 
 df['nom_Produit'] = df['nom_Produit'].str.replace('ACUVUE','Acuvue')
 
 
-def make_clickable(lienAchat, id):
-    return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchat,id)
+def make_clickable(lienAchat, lmc30):
+    return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchat,lmc30)
 
-df['LMC30'] = df.apply(lambda x: make_clickable(x['lienAchat'], x['LMC30']), axis=1)
+df['lmc30'] = df.apply(lambda x: make_clickable(x['lienAchat'], x['lmc30']), axis=1)
 
 print(df.iloc[0])
 
 
 df_products = pd.DataFrame.from_dict(df)
-list_ids = df_products.LMC30.tolist()
+list_ids = df_products.id.tolist()
 df_products = df_products.to_html(index=False, table_id="sellers_table-id", render_links=True,escape=False)
 
 

@@ -62,11 +62,11 @@ for job in jobs:
 df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
     'marque', 'nom_Produit', 'LMC30', 'LMC90', 'lienAchat'])
 
-df['LMC30'] = df['LMC30'].str.replace("€", "")
+df['id'] = df['id'].str.replace("€", "")
 
-df['LMC30'] = df['LMC30'].str.strip()
+df['id'] = df['id'].str.strip()
 
-df['LMC30'] = df['LMC30'].str.slice(start=-5)
+df['id'] = df['id'].str.slice(start=-5)
 
 df = df[~df['marque'].isin(['something else'])]
 
@@ -76,13 +76,13 @@ df['nom_Produit'] = df['nom_Produit'].str.replace('ACUVUE','Acuvue')
 def make_clickable(lienAchat, id):
     return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchat,id)
 
-df['LMC30'] = df.apply(lambda x: make_clickable(x['lienAchat'], x['LMC30']), axis=1)
+df['id'] = df.apply(lambda x: make_clickable(x['lienAchat'], x['id']), axis=1)
 
 print(df.iloc[0])
 
 
 df_products = pd.DataFrame.from_dict(df)
-list_ids = df_products.LMC30.tolist()
+list_ids = df_products.id.tolist()
 df_products = df_products.to_html(index=False, table_id="sellers_table-id", render_links=True,escape=False)
 
 

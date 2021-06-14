@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #myInput {
+        background-image: url("/css/searchicon.png");
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+
+      #myTable {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+      }
+
+      #myTable th,
+      #myTable td {
+        text-align: left;
+        padding: 12px;
+      }
+
+      #myTable tr {
+        border-bottom: 1px solid #ddd;
+      }
+
+      #myTable tr.header,
+      #myTable tr:hover {
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>My Customers</h2>
+
+    <input
+      type="text"
+      id="myInput"
+      onkeyup="myFunction()"
+      placeholder="Search for names.."
+      title="Type in a name"
+    />
+
+    <table id="myTable">
+      <thead>
+        <tr style="text-align: right;">
+          <th>marque</th>
+          <th>nom_Produit</th>
+          <th>id</th>
+          <th>lienAchat</th>
+          <th>LMC90</th>
+        </tr>
+      </thead>
+      <table id="myTable">
+        <thead>
+          <tr style="text-align: right;">
+            <th>marque</th>
+            <th>nom_Produit</th>
+            <th>id</th>
+            <th>lienAchat</th>
+            <th>LMC90</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE Moist Multifocal (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-multifocal-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-multifocal-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE Moist Multifocal (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-multifocal-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-multifocal-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>Acuvue Oasys with Hydraclear Plus</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-with-hydraclear-plus.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-with-hydraclear-plus.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>Acuvue Oasys 12 with Hydraclear Plus</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-12-with-hydraclear-plus.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-12-with-hydraclear-plus.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>Acuvue Oasys 24 with Hydraclear Plus</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-24-with-hydraclear-plus.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-24-with-hydraclear-plus.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>Acuvue Oasys for Presbyopia with Hydraclear Plus</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-for-presbyopia-with-hydraclear-plus.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-for-presbyopia-with-hydraclear-plus.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>ACUVUE Oasys with Transitions (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-with-transitions-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-with-transitions-6.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>Acuvue VITA</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-acuvue-vita.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-acuvue-vita.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>Acuvue VITA for Astigmatism (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-acuvue-vita-for-astigmatism-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-acuvue-vita-for-astigmatism-6.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Biomedics</td>
+            <td>Biomedics 1 Day Toric Extra (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-biomedics-1-day-toric-extra-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-biomedics-1-day-toric-extra-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Clariti</td>
+            <td>Clariti 1 Day (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Clariti</td>
+            <td>Clariti 1 Day (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Clariti</td>
+            <td>Clariti 1 Day multifocal (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-multifocal-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-multifocal-30.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Clariti</td>
+            <td>Clariti 1 Day multifocal (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-multifocal-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-multifocal-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Clariti</td>
+            <td>Clariti 1 Day Toric (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-toric-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-clariti-1-day-toric-30.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE Moist (180)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-180.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-180.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE Moist (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE Moist (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE Moist for Astigmatism (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-for-astigmatism-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-for-astigmatism-30.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE Moist for Astigmatism (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-for-astigmatism-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-moist-for-astigmatism-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE TruEye (180)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-trueye-180.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-trueye-180.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE TruEye (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-trueye-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-trueye-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>1-Day ACUVUE TruEye (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-trueye-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-1-day-acuvue-trueye-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>ACUVUE 2 (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-2-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-2-6.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>ACUVUE Oasys 1-Day (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-acuvue-oasys-1-day-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-acuvue-oasys-1-day-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>ACUVUE Oasys 1-Day (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-acuvue-oasys-1-day-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-acuvue-oasys-1-day-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>ACUVUE Oasys 1-Day for Astigmatism (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-acuvue-oasys-1-day-for-astigmatism-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-acuvue-oasys-1-day-for-astigmatism-30.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>ACUVUE Oasys 1-Day for Astigmatism (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-acuvue-oasys-1-day-for-astigmatism-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-acuvue-oasys-1-day-for-astigmatism-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>ACUVUE Oasys For Astigmatism (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-for-astigmatism-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-for-astigmatism-6.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Acuvue</td>
+            <td>ACUVUE Oasys For Astigmatism (12)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-for-astigmatism-12.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/bi-mensuelles/lentilles-acuvue-oasys-for-astigmatism-12.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Biomedics</td>
+            <td>Biomedics Evolution</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-biomedics-evolution.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-biomedics-evolution.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Biomedics</td>
+            <td>Biomedics Toric</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-biomedics-toric.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-biomedics-toric.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Clariti</td>
+            <td>Clariti Elite (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-clariti-elite-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-clariti-elite-6.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Dailies</td>
+            <td>Dailies AquaComfort Plus Multifocal (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-dailies-aquacomfort-plus-multifocal-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-dailies-aquacomfort-plus-multifocal-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Dailies</td>
+            <td>Dailies All Day Comfort 30</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-dailies-all-day-comfort-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-dailies-all-day-comfort-30.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Dailies</td>
+            <td>Dailies All Day Comfort 90</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-dailies-all-day-comfort-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-dailies-all-day-comfort-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-6.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear 1 Day (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-proclear-1-day-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-proclear-1-day-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear 1 Day (90)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-proclear-1-day-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-proclear-1-day-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear Multifocal (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-multifocal-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-multifocal-6.html</a></td>
+            <td>seulement 30</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear Multifocal Toric (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-multifocal-toric-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-multifocal-toric-6.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear XR multifocal (6)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-xr-multifocal-6.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-xr-multifocal-6.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear Toric</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-toric.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-toric.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear Toric XR</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-toric-xr.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/mensuelles/lentilles-proclear-toric-xr.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Biomedics</td>
+            <td>Biomedics 1 Day Extra 30</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-biomedics-1-day-extra-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-biomedics-1-day-extra-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Biomedics</td>
+            <td>Biomedics 1 Day Extra 90</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-biomedics-1-day-extra-90.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-biomedics-1-day-extra-90.html</a></td>
+            <td>bien 90</td>
+          </tr>
+          <tr>
+            <td>Proclear</td>
+            <td>Proclear 1 Day Multifocal (30)</td>
+            <td><a href="google.fr" target="_blank">"google.fr"</a></td>
+            <td><a href="https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-proclear-1-day-multifocal-30.html" target="_blank">https://lentillesmoinscheres.com/lentilles-de-contact/journalieres/lentilles-proclear-1-day-multifocal-30.html</a></td>
+            <td>bien 90</td>
+          </tr>
+        </tbody>
+      </table>
+    </table>
+    <script>
+      function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
