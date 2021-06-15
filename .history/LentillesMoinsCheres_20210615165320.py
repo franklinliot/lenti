@@ -2,9 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
+nom_Produit = ""
 npo_jobs = {}
 jobs_no = 0
-Colors = ["Acuvue Oasys with Hydraclear Plus", "Acuvue Oasys 12 with Hydraclear Plus"]
 
 html_text = requests.get(
     "https://www.lentillesmoinscheres.com/lentilles-de-contact/journalieres/").text
@@ -14,7 +14,7 @@ jobs = soup.find_all("li", class_="type-LENS")
 for job in jobs:
     nomProduit = job.find("h3", class_="product-title")
     nom_Produit = nomProduit.text.replace("</a>", "")
-    
+
     if (nom_Produit.find('Acuvue') != -1 or nom_Produit.find('ACUVUE') != -1):
         marque = "Acuvue"
     elif (nom_Produit.find('Biomedics') != -1):
@@ -31,10 +31,6 @@ for job in jobs:
         marque = "Proclear"
     else:
         marque = "something else"
-
-
-
-
 
     prixProduit = job.find("div", class_="price")
     id = prixProduit.text.replace("</a>", "")
@@ -67,10 +63,6 @@ df['LMC30'] = df.apply(lambda x: make_clickable(
 df = df[['marque', 'nom_Produit', 'LMC30']]
 
 df = df.sort_values('nom_Produit')
-
-#Drop les something else
-df = df[~df['marque'].str.contains("something else")]
-
 
 df_products = pd.DataFrame.from_dict(df)
 df_products = df_products.to_html(

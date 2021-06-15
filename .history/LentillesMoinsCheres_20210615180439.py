@@ -4,7 +4,7 @@ import pandas as pd
 
 npo_jobs = {}
 jobs_no = 0
-Colors = ["Acuvue Oasys with Hydraclear Plus", "Acuvue Oasys 12 with Hydraclear Plus"]
+Colors = ["1-Day ACUVUE Moist (30)", "Miru"]
 
 html_text = requests.get(
     "https://www.lentillesmoinscheres.com/lentilles-de-contact/journalieres/").text
@@ -15,6 +15,10 @@ for job in jobs:
     nomProduit = job.find("h3", class_="product-title")
     nom_Produit = nomProduit.text.replace("</a>", "")
     
+    result = [nom_Produit for nom_Produit in nom_Produit if Colors in nom_Produit]
+    result = str(result)
+    print (result)
+
     if (nom_Produit.find('Acuvue') != -1 or nom_Produit.find('ACUVUE') != -1):
         marque = "Acuvue"
     elif (nom_Produit.find('Biomedics') != -1):
@@ -31,10 +35,6 @@ for job in jobs:
         marque = "Proclear"
     else:
         marque = "something else"
-
-
-
-
 
     prixProduit = job.find("div", class_="price")
     id = prixProduit.text.replace("</a>", "")
@@ -67,10 +67,6 @@ df['LMC30'] = df.apply(lambda x: make_clickable(
 df = df[['marque', 'nom_Produit', 'LMC30']]
 
 df = df.sort_values('nom_Produit')
-
-#Drop les something else
-df = df[~df['marque'].str.contains("something else")]
-
 
 df_products = pd.DataFrame.from_dict(df)
 df_products = df_products.to_html(

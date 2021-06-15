@@ -4,7 +4,7 @@ import pandas as pd
 
 npo_jobs = {}
 jobs_no = 0
-Colors = ["Acuvue Oasys with Hydraclear Plus", "Acuvue Oasys 12 with Hydraclear Plus"]
+Colors = "Acuvue"
 
 html_text = requests.get(
     "https://www.lentillesmoinscheres.com/lentilles-de-contact/journalieres/").text
@@ -32,8 +32,7 @@ for job in jobs:
     else:
         marque = "something else"
 
-
-
+    print (nom_Produit)
 
 
     prixProduit = job.find("div", class_="price")
@@ -70,6 +69,7 @@ df = df.sort_values('nom_Produit')
 
 #Drop les something else
 df = df[~df['marque'].str.contains("something else")]
+
 
 
 df_products = pd.DataFrame.from_dict(df)

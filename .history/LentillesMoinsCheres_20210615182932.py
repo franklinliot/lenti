@@ -32,10 +32,6 @@ for job in jobs:
     else:
         marque = "something else"
 
-
-
-
-
     prixProduit = job.find("div", class_="price")
     id = prixProduit.text.replace("</a>", "")
 
@@ -70,6 +66,15 @@ df = df.sort_values('nom_Produit')
 
 #Drop les something else
 df = df[~df['marque'].str.contains("something else")]
+
+print (''.join(Colors))
+
+'''
+if (Colors.index(nom_Produit) != -1):
+    print ("salut")
+else:
+    print ("NON")
+'''
 
 
 df_products = pd.DataFrame.from_dict(df)

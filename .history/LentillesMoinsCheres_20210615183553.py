@@ -32,7 +32,13 @@ for job in jobs:
     else:
         marque = "something else"
 
-
+'''
+print (nom_Produit)
+    if (nom_Produit.find('Acuvue VITA') != -1):
+        marque = "Acuvue"
+    else:
+        marque = "something else"
+'''
 
 
 

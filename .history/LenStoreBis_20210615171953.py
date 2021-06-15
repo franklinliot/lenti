@@ -4,17 +4,15 @@ import pandas as pd
 
 npo_jobs = {}
 jobs_no = 0
-Colors = ["Acuvue Oasys with Hydraclear Plus", "Acuvue Oasys 12 with Hydraclear Plus"]
 
-html_text = requests.get(
-    "https://www.lentillesmoinscheres.com/lentilles-de-contact/journalieres/").text
+html_text = requests.get("https://www.lenstore.fr/c1/lentilles-journalieres").text
 soup = BeautifulSoup(html_text, 'lxml')
-jobs = soup.find_all("li", class_="type-LENS")
+jobs = soup.find_all("li", class_ = "o-unstyled-list c-product-list__item u-text-center js-impression-product")    
 
 for job in jobs:
-    nomProduit = job.find("h3", class_="product-title")
-    nom_Produit = nomProduit.text.replace("</a>", "")
-    
+    nomProduit = job.find("h3", class_ ="c-product-list__title")
+    nom_Produit = nomProduit.text.replace("</a>", "").strip()
+
     if (nom_Produit.find('Acuvue') != -1 or nom_Produit.find('ACUVUE') != -1):
         marque = "Acuvue"
     elif (nom_Produit.find('Biomedics') != -1):
@@ -32,61 +30,53 @@ for job in jobs:
     else:
         marque = "something else"
 
+    LenStore30 = job.find("span", class_ = "u-price")
+    print (LenStore30)
 
-
-
-
-    prixProduit = job.find("div", class_="price")
-    id = prixProduit.text.replace("</a>", "")
-
-    lienAchatLMC = "https://www.lentillesmoinscheres.com" + job.h3.a['href']
+    lienAchatLenStore = job.h3.a['href']
     jobs_no += 1
     npo_jobs[jobs_no] = [marque, nom_Produit,
-                         id, lienAchatLMC]
+                         LenStore30, lienAchatLenStore]
 
 #Définir les colonnes du dataframe
 df = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
-    'marque', 'nom_Produit', 'LMC30', 'lienAchatLMC'])
+    'marque', 'nom_Produit', 'LenStore30', 'lienAchatLenStore'])
 
-#Clean le LMC30
-df['LMC30'] = df['LMC30'].str.replace("€", "")
-df['LMC30'] = df['LMC30'].str.strip()
-df['LMC30'] = df['LMC30'].str.slice(start=-5)
+
+#Clean le LenStore30
+df['LenStore30'] = df['LenStore30'].str.replace("€", "")
 
 df['nom_Produit'] = df['nom_Produit'].str.replace('ACUVUE', 'Acuvue')
 
 # Rendre les liens cliquables pour
-def make_clickable(lienAchatLMC, id):
-    return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchatLMC, id)
+#def make_clickable(lienAchatLenStore, id):
+#    return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchatLenStore, id)
 
 
-df['LMC30'] = df.apply(lambda x: make_clickable(
-    x['lienAchatLMC'], x['LMC30']), axis=1)
+#Rendre LenStore30 cliquable
+#df['LenStore30'] = df.apply(lambda x: make_clickable(
+#    x['lienAchatLenStore'], x['LenStore30']), axis=1)
 
-# Cache la colonne lienAchatLMC
-df = df[['marque', 'nom_Produit', 'LMC30']]
+# Cache la colonne lienAchatLenStore
+#df = df[['marque', 'nom_Produit', 'LenStore30']]
 
 df = df.sort_values('nom_Produit')
-
-#Drop les something else
-df = df[~df['marque'].str.contains("something else")]
-
 
 df_products = pd.DataFrame.from_dict(df)
 df_products = df_products.to_html(
     index=False, table_id="sellers_table-id", render_links=True, escape=False)
 
 text_file = open(
-    "/home/franklin/coding/lenti/data/LentMCheres/LentMCheres.html", "w")
+    "/home/franklin/coding/lenti/data/LenStore/LenStore.html", "w")
 text_file.write(df_products)
 text_file.close()
 
 a_file = open(
-    "/home/franklin/coding/lenti/data/LentMCheres/LentMCheres.html", "r")
+    "/home/franklin/coding/lenti/data/LenStore/LenStore.html", "r")
 list_of_lines = a_file.readlines()
 list_of_lines[0] = "<table id=\"myTable\">\n"
 
 a_file = open(
-    "/home/franklin/coding/lenti/data/LentMCheres/LentMCheres.html", "w")
+    "/home/franklin/coding/lenti/data/LenStore/LenStore.html", "w")
 a_file.writelines(list_of_lines)
 a_file.close()
