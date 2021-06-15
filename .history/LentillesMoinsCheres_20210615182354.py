@@ -32,8 +32,10 @@ for job in jobs:
     else:
         marque = "something else"
 
-
-
+        if (Colors.index(nom_Produit) != -1):
+            print ("salut")
+        else:
+            print ("NON")
 
 
     prixProduit = job.find("div", class_="price")

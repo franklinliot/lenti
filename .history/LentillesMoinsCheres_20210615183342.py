@@ -34,6 +34,12 @@ for job in jobs:
 
 
 
+    if (nom_Produit.find('Acuvue VITA') != -1):
+        marque = "Acuvue"
+    else:
+        marque = "something else"
+
+
 
 
     prixProduit = job.find("div", class_="price")
