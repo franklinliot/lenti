@@ -103,7 +103,6 @@ df2 = df2[['nom_Produit', 'Marque',  'LenStore']]
 
 df2 = df2.sort_values('nom_Produit')
 
-df2.rename(columns={'nom_Produit': 'Nom Produit'}, inplace=True)
 
 # Drop les something else
 df2 = df2[~df2['Marque'].str.contains("something else")]

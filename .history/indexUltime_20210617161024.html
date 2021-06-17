@@ -72,7 +72,12 @@
           c = document.getElementsByTagName("*");
         for (b in c)
           c[b].hasAttribute &&
-            c[b].hasAttribute("data-include") &&
+            c[b].hasAttribu<select id="countriesDropdown" oninput="filterTable()">
+  <option>All</option>
+  <option>Sweden</option>
+  <option>Germany</option>
+</select>
+te("data-include") &&
             a(c[b], c[b].getAttribute("data-include"));
       };
     </script>
@@ -116,20 +121,13 @@
       placeholder="Cherchez un produit..."
       title="Entrez un produit"
     />
-
     <select id="countriesDropdown" oninput="filterTable()">
-      <option>All</option>
       <option>Acuvue</option>
-      <option>Biomedics</option>
-      <option>Clariti</option>
       <option>Dailies</option>
-      <option>Proclear</option>
-      <option>Soflens</option>
+      <option>Clariti</option>
     </select>
 
-    <p></p>
-
-
+    
     <div data-include="data/ultime/ultime.html"></div>
     <script>
       function myFunction() {
@@ -151,29 +149,29 @@
         }
       }
     </script>
-
+    
     <script>
       function filterTable() {
-        // Variables
-        let dropdown, table, rows, cells, country, filter;
-        dropdown = document.getElementById("countriesDropdown");
-        table = document.getElementById("myTable");
-        rows = table.getElementsByTagName("tr");
-        filter = dropdown.value;
+  // Variables
+  let dropdown, table, rows, cells, country, filter;
+  dropdown = document.getElementById("countriesDropdown");
+  table = document.getElementById("myTable");
+  rows = table.getElementsByTagName("tr");
+  filter = dropdown.value;
 
-        // Loops through rows and hides those with countries that don't match the filter
-        for (let row of rows) {
-          // `for...of` loops through the NodeList
-          cells = row.getElementsByTagName("td");
-          country = cells[1] || null; // gets the 2nd `td` or nothing
-          // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
-          if (filter === "All" || !country || filter === country.textContent) {
-            row.style.display = ""; // shows this row
-          } else {
-            row.style.display = "none"; // hides this row
-          }
-        }
-      }
+  // Loops through rows and hides those with countries that don't match the filter
+  for (let row of rows) { // `for...of` loops through the NodeList
+    cells = row.getElementsByTagName("td");
+    country = cells[1] || null; // gets the 2nd `td` or nothing
+    // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
+    if (filter === "All" || !country || (filter === country.textContent)) {
+      row.style.display = ""; // shows this row
+    }
+    else {
+      row.style.display = "none"; // hides this row
+    }
+  }
+}
     </script>
   </body>
 </html>

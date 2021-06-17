@@ -117,18 +117,22 @@
       title="Entrez un produit"
     />
 
-    <select id="countriesDropdown" oninput="filterTable()">
-      <option>All</option>
-      <option>Acuvue</option>
-      <option>Biomedics</option>
-      <option>Clariti</option>
-      <option>Dailies</option>
-      <option>Proclear</option>
-      <option>Soflens</option>
-    </select>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet"/>
 
-    <p></p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
+<select id="cato" class="form-control" >
+  <option value="" disabled selected="true">-Select Category-</option>
+  <option>Electronics</option>
+  <option>Sports</option>
+</select>
+
+<select id="subo" class="form-control">
+   <option value="" disabled selected="true">-Select Subcategory-</option>
+   <option>Laptop</option>
+   <option>Mobile</option>
+</select>
 
     <div data-include="data/ultime/ultime.html"></div>
     <script>
@@ -151,29 +155,46 @@
         }
       }
     </script>
-
     <script>
-      function filterTable() {
-        // Variables
-        let dropdown, table, rows, cells, country, filter;
-        dropdown = document.getElementById("countriesDropdown");
-        table = document.getElementById("myTable");
-        rows = table.getElementsByTagName("tr");
-        filter = dropdown.value;
-
-        // Loops through rows and hides those with countries that don't match the filter
-        for (let row of rows) {
-          // `for...of` loops through the NodeList
-          cells = row.getElementsByTagName("td");
-          country = cells[1] || null; // gets the 2nd `td` or nothing
-          // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
-          if (filter === "All" || !country || filter === country.textContent) {
-            row.style.display = ""; // shows this row
-          } else {
-            row.style.display = "none"; // hides this row
-          }
+      var table = $('#myTable').DataTable({
+  "bLengthChange": false,
+  //searching: false,
+  pageLength: 2,
+  dom: 'tip'
+});
+  
+$.fn.dataTable.ext.search.push(
+function( settings, data, dataIndex ) {
+  example
+    var filterCategory= $("#cato option:selected").text().toUpperCase();
+    var filterSubCategory= $("#subo option:selected").text().toUpperCase();
+    var subCategory = String(data[1]).toUpperCase();
+    var category = String(data[2]).toUpperCase();
+    
+    //console.log(filterSubCategory);
+    
+    if(filterSubCategory != "-SELECT SUBCATEGORY-") {
+        if ( filterCategory == category && filterSubCategory == subCategory)
+             return true;
         }
-      }
+        else if(filterCategory != "-SELECT CATEGORY-") {
+            if ( filterCategory == category)
+             return true;
+        }
+  
+        return false;
+    }
+);
+
+$('#cato').on('change', function() {
+  $('#subo').val("");
+  table.draw();
+});
+
+$('#subo').on('change', function() {
+  table.draw();
+});
+
     </script>
   </body>
 </html>
