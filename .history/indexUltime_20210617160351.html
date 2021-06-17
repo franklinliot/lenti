@@ -52,6 +52,13 @@
         line-height: 1.25em;
         margin-bottom: 16px;
       }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
     </style>
     <script>
       window.onload = function () {
@@ -104,6 +111,84 @@
         })
       );
     </script>
+    <script>
+      $(".filter").change(function () {
+        filter_function();
+
+        //calling filter function each select box value change
+      });
+
+      $("table tbody tr").show(); //intially all rows will be shown
+
+      function filter_function() {
+        $("table tbody tr").hide(); //hide all rows
+
+        var companyFlag = 0;
+        var companyValue = $("#filter-company").val();
+        var contactFlag = 0;
+        var contactValue = $("#filter-contact").val();
+        var rangeFlag = 0;
+        var rangeValue = $("#filter-range").val();
+        var rangeminValue = $("#filter-range")
+          .find(":selected")
+          .attr("data-min");
+        var rangemaxValue = $("#filter-range")
+          .find(":selected")
+          .attr("data-max");
+
+        //setting intial values and flags needed
+
+        //traversing each row one by one
+        $("table tr").each(function () {
+          if (companyValue == 0) {
+            //if no value then display row
+            companyFlag = 1;
+          } else if (
+            companyValue == $(this).find("td.company").data("company")
+          ) {
+            companyFlag = 1; //if value is same display row
+          } else {
+            companyFlag = 0;
+          }
+
+          if (contactValue == 0) {
+            contactFlag = 1;
+          } else if (
+            contactValue == $(this).find("td.contact").data("contact")
+          ) {
+            contactFlag = 1;
+          } else {
+            contactFlag = 0;
+          }
+
+          if (rangeValue == 0) {
+            rangeFlag = 1;
+          }
+          //condition to display rows for a range
+          else if (
+            (rangeminValue <= $(this).find("td.range").data("min") &&
+              rangemaxValue > $(this).find("td.range").data("min")) ||
+            (rangeminValue < $(this).find("td.range").data("max") &&
+              rangemaxValue >= $(this).find("td.range").data("max"))
+          ) {
+            rangeFlag = 1;
+          } else {
+            rangeFlag = 0;
+          }
+
+          console.log(rangeminValue + " " + rangemaxValue);
+          console.log(
+            $(this).find("td.range").data("min") +
+              " " +
+              $(this).find("td.range").data("max")
+          );
+
+          if (companyFlag && contactFlag && rangeFlag) {
+            $(this).show(); //displaying row which satisfies all conditions
+          }
+        });
+      }
+    </script>
   </head>
   <body>
     <h2>Lenti.fr, le premier comparateur de lentilles de contact en ligne</h2>
@@ -117,18 +202,10 @@
       title="Entrez un produit"
     />
 
-    <select id="countriesDropdown" oninput="filterTable()">
-      <option>All</option>
-      <option>Acuvue</option>
-      <option>Biomedics</option>
-      <option>Clariti</option>
-      <option>Dailies</option>
-      <option>Proclear</option>
-      <option>Soflens</option>
+    <select id="filter-company" class="filter">
+      <option value="0">No value</option>
+      <option value="Acuvue">Acuvue</option>
     </select>
-
-    <p></p>
-
 
     <div data-include="data/ultime/ultime.html"></div>
     <script>
@@ -147,30 +224,6 @@
             } else {
               tr[i].style.display = "none";
             }
-          }
-        }
-      }
-    </script>
-
-    <script>
-      function filterTable() {
-        // Variables
-        let dropdown, table, rows, cells, country, filter;
-        dropdown = document.getElementById("countriesDropdown");
-        table = document.getElementById("myTable");
-        rows = table.getElementsByTagName("tr");
-        filter = dropdown.value;
-
-        // Loops through rows and hides those with countries that don't match the filter
-        for (let row of rows) {
-          // `for...of` loops through the NodeList
-          cells = row.getElementsByTagName("td");
-          country = cells[1] || null; // gets the 2nd `td` or nothing
-          // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
-          if (filter === "All" || !country || filter === country.textContent) {
-            row.style.display = ""; // shows this row
-          } else {
-            row.style.display = "none"; // hides this row
           }
         }
       }

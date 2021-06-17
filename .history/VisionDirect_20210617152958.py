@@ -6,17 +6,16 @@ npo_jobs = {}
 jobs_no = 0
 Marque =""
 
-html_text = requests.get("https://www.malentille.com/36-journaliere-36").text
+html_text = requests.get("https://www.visiondirect.fr/lentilles-de-contact/lentilles-journalieres/").text
 soup = BeautifulSoup(html_text, 'lxml')
-jobs = soup.find_all("li", class_ = "ajax_block_product")
-
+jobs = soup.find_all("li", class_ = "layout__item +1/3 +1/2-tablet +1/2-smart")
 
 for job in jobs:
-    nomProduit = job.find("h3")
-    nom_Produit = nomProduit.text.replace("</a>", "")
+    nomProduit = job.find("div", class_ ="products-list__name same-height__name")
+    nom_Produit = nomProduit.text.replace("</a>", "").strip()
 
-    prixProduit = job.find("font", class_ = "category_price")
-    id = prixProduit.text.replace("</font>", "")
+    prixProduit = job.find("span", class_ = "price")
+    id = prixProduit.text.replace("</span>", "")
     
     if (nom_Produit.find('(30)') != -1):
         nom_Produit = str.replace(nom_Produit, " (30)", "")
@@ -27,7 +26,9 @@ for job in jobs:
         nom_Produit = str.replace(nom_Produit, "ACUVUE", "Acuvue")
     elif (nom_Produit.find('DAILIES') != -1):
         nom_Produit = str.replace(nom_Produit, "DAILIES", "Dailies")
-    
+    elif (nom_Produit.find('clariti') != -1):
+        nom_Produit = str.replace(nom_Produit, "clariti", "Clariti")
+
     if (nom_Produit.find('1 Day') != -1):
         nom_Produit = str.replace(nom_Produit, "1 Day", "1-Day")
     
@@ -67,7 +68,7 @@ for job in jobs:
         Marque = "Proclear"
     else:
         Marque = "something else"
-    
+        
     nom_Produit = str(nom_Produit)
     if (nom_Produit.find('1-Day Acuvue Moist') != -1):
         Marque = "Acuvue"
@@ -75,9 +76,9 @@ for job in jobs:
         Marque = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist Multifocal') != -1):
         Marque = "Acuvue"
-    elif (nom_Produit.find('Biomedics 1 Day Extra') != -1):
+    elif (nom_Produit.find('Biomedics') != -1 and id.find('12,99') != -1):
         Marque = "Biomedics"
-    elif (nom_Produit.find('Clariti 1 Day multifocal') != -1):
+    elif (nom_Produit.find('Clariti 1-Day multifocal') != -1):
         Marque = "Clariti"
     elif (nom_Produit.find('Dailies AquaComfort Plus') != -1):
         Marque = "Dailies"
@@ -93,71 +94,71 @@ for job in jobs:
         Marque = "something else"
     elif (nom_Produit.find('Proclear 1-Day') != -1):
         Marque = "Proclear"
-    elif (nom_Produit.find('SofLens daily disposable pour Astigmates') != -1):
+    elif (nom_Produit.find('SofLens Daily for Astigmatism') != -1):
         Marque = "something else"
-    elif (nom_Produit.find('Soflens Daily DisposableL') != -1):
+    elif (nom_Produit.find('SofLens Daily') != -1):
         Marque = "Soflens"
+
     else:
         Marque = "something else"
     
 
-    lienAchatMaLentille = job.h3.a['href']
+    lienAchatVisionDirect = job.a['href']
+
     jobs_no += 1
     npo_jobs[jobs_no] = [nom_Produit, Marque, 
-                         id, lienAchatMaLentille]
+                         id, lienAchatVisionDirect]
 
 #Définir les colonnes du dataframe
-df3 = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
-     'nom_Produit', 'Marque','Ma Lentille', 'lienAchatMaLentille'])
+df4 = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
+     'nom_Produit', 'Marque','VisionD30', 'lienAchatVisionDirect'])
 
-#Clean le Ma Lentille
-df3['Ma Lentille'] = df3['Ma Lentille'].str.replace("€", "")
-df3['Ma Lentille'] = df3['Ma Lentille'].str.strip()
-df3['Ma Lentille'] = df3['Ma Lentille'].str.slice(start=-5)
+#Clean le VisionD30
+df4['VisionD30'] = df4['VisionD30'].str.replace("€", "")
+df4['VisionD30'] = df4['VisionD30'].str.strip()
+df4['VisionD30'] = df4['VisionD30'].str.slice(start=-5)
 
-df3['nom_Produit'] = df3['nom_Produit'].str.replace('ACUVUE', 'Acuvue')
+df4['nom_Produit'] = df4['nom_Produit'].str.replace('ACUVUE', 'Acuvue')
 
 # Rendre les liens cliquables pour
-def make_clickable(lienAchatMaLentille, id):
-    return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchatMaLentille, id)
+def make_clickable(lienAchatVisionDirect, id):
+    return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchatVisionDirect, id)
 
 
-df3['Ma Lentille'] = df3.apply(lambda x: make_clickable(
-    x['lienAchatMaLentille'], x['Ma Lentille']), axis=1)
+df4['VisionD30'] = df4.apply(lambda x: make_clickable(
+    x['lienAchatVisionDirect'], x['VisionD30']), axis=1)
 
-# Cache la colonne lienAchatMaLentille
-df3 = df3[['nom_Produit', 'Marque',  'Ma Lentille']]
+# Cache la colonne lienAchatVisionDirect
+df4 = df4[['nom_Produit', 'Marque', 'VisionD30']]
 
-df3 = df3.sort_values('nom_Produit')
+df4 = df4.sort_values('nom_Produit')
 
 #Cacher les something else
-df3 = df3[~df3['Marque'].str.contains("something else")]
+df4 = df4[~df4['Marque'].str.contains("something else")]
 
-df3 = df3[~df3['nom_Produit'].str.contains("90L")]
-df3 = df3[~df3['nom_Produit'].str.contains("180L")]
-df3 = df3[~df3['nom_Produit'].str.contains("90")]
+df4 = df4[~df4['nom_Produit'].str.contains("90L")]
+df4 = df4[~df4['nom_Produit'].str.contains("180L")]
+df4 = df4[~df4['nom_Produit'].str.contains("90")]
 
-
-df3.rename(columns={'nom_Produit': 'Nom Produit'}, inplace=True)
-
-
-df_products = pd.DataFrame.from_dict(df3)
+df_products = pd.DataFrame.from_dict(df4)
 df_products = df_products.to_html(table_id="sellers_table-id", render_links=True, escape=False, index=False)
+
+df4 = df4.sort_values('nom_Produit')
 
 
 text_file = open(
-    "/home/franklin/coding/lenti/data/MaLentille/MaLentille.html", "w")
+    "/home/franklin/coding/lenti/data/VisionDirect/VisionDirect.html", "w")
 text_file.write(df_products)
 text_file.close()
 
 a_file = open(
-    "/home/franklin/coding/lenti/data/MaLentille/MaLentille.html", "r")
+    "/home/franklin/coding/lenti/data/VisionDirect/VisionDirect.html", "r")
 list_of_lines = a_file.readlines()
 list_of_lines[0] = "<table id=\"myTable\">\n"
 
 a_file = open(
-    "/home/franklin/coding/lenti/data/MaLentille/MaLentille.html", "w")
+    "/home/franklin/coding/lenti/data/VisionDirect/VisionDirect.html", "w")
 a_file.writelines(list_of_lines)
 a_file.close()
 
-df3.to_csv(r'data/MaLentille/MaLentille.csv', index=False)
+df4.to_csv(r'data/VisionDirect/VisionDirect.csv', index=False)

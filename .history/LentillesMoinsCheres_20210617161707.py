@@ -113,7 +113,7 @@ df = df[~df['Marque'].str.contains("something else")]
 df = df[~df['nom_Produit'].str.contains("90")]
 df = df[~df['nom_Produit'].str.contains("8")]
 
-df.rename(columns={'nom_Produit': 'Nom Produit'}, inplace=True)
+df = df.rename('nom_Produit', "nom Produit")
 
 
 
