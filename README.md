@@ -41,4 +41,4 @@ Situation au 18 juin 2021;
     - Rendre plus visible les colonnes "revendeurs" des colonnes marque et nom produit
     - Automatiser la transformation de CSV vers HTML
         --> Trouver un moyen de remplacer automatiquement toutes les erreurs liées à la conversion CSV/HTML facilement
-        --> Trouver un moyen de faire exécuter tous les quatre fichiers en une fois
+        --> DONE Trouver un moyen de faire exécuter tous les quatre fichiers en une fois
