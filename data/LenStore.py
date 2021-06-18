@@ -45,6 +45,8 @@ for job in jobs:
     LenStore = job.find("span", class_="u-price")
     LenStore = str(LenStore)
 
+    print (nom_Produit)
+    
     if (nom_Produit.find('1-Day Acuvue Moist') != -1 and LenStore.find('16,49') != -1):
         Marque = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist for Astigmatism') != -1):
