@@ -15,11 +15,6 @@
     - SofLens Daily Disposable
 
 
-Théorie en cours: 
-- En arrivant à avoir les produits sur les différentes listes par revendeur, je peux les joindre en un fichier CSV et manuellement les coller.
---> M'assurer que j'ai bien les même produits pour tous les revendeurs.
-
-
 ## Leurs prix pour au moins 5 revendeurs + lien pour les acheter
     - LenStore
     - VisionDirect
@@ -37,3 +32,13 @@ Théorie en cours:
         - DONE LentillesMoinsCheres 
         - DONE MaLentille
         - OpticalDiscount
+
+Situation au 18 juin 2021;
+- Une première version du site est fonctionelle
+- Prochains objectifs:
+    - Freeze une colonne + améliorer responsiveness du site sur les téléphones
+    - Highlight en vert les cellules avec les prix les moins chers
+    - Rendre plus visible les colonnes "revendeurs" des colonnes marque et nom produit
+    - Automatiser la transformation de CSV vers HTML
+        --> Trouver un moyen de remplacer automatiquement toutes les erreurs liées à la conversion CSV/HTML facilement
+        --> Trouver un moyen de faire exécuter tous les quatre fichiers en une fois
