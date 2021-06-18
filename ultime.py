@@ -1,4 +1,10 @@
 import pandas as pd
+import LenStore
+import LentillesMoinsCheres
+import MaLentille
+import VisionDirect
+
+
 
 df = pd.concat(map(pd.read_csv, ['data/LenStore/LenStore.csv', 'data/LentMCheres/LentillesMoinsCheres.csv', 'data/MaLentille/MaLentille.csv', 'data/VisionDirect/VisionDirect.csv']))
 
