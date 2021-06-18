@@ -2,189 +2,36 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-
-      #myInput {
-        background-image: url("/css/searchicon.png");
-        background-position: 10px 10px;
-        background-repeat: no-repeat;
-        width: 100%;
-        font-size: 16px;
-        padding: 12px 20px 12px 40px;
-        border: 1px solid #ddd;
-        margin-bottom: 12px;
-      }
-
-      #myTable {
-        border-collapse: collapse;
-        width: 100%;
-        border: 1px solid #ddd;
-        font-size: 18px;
-      }
-
-      #myTable th,
-      #myTable td {
-        padding: 12px;
-      }
-
-      #myTable tr {
-        border-bottom: 1px solid #ddd;
-      }
-
-      #myTable tr.header,
-      #myTable tr:hover {
-        background-color: #f1f1f1;
-      }
-
-      body {
-        font-family: "sans", Arial, sans-serif;
-        font-size: 75%;
-      }
-
-      h2 {
-        color: var(--heading-color);
-        font-size: 1.6em;
-        font-weight: normal;
-        line-height: 1.25em;
-        margin-bottom: 16px;
-      }
-
-      #myTable tr td:nth-child(2),
-      #myTable tr td:nth-child(3),
-      #myTable tr td:nth-child(4),
-      #myTable tr td:nth-child(5),
-      #myTable tr td:nth-child(6) {
-        text-align: center;
-      }
-
-      .tablepress-id-myTable .row-2 .column-2 {
-        background-color: #ff0000;
-        color: #ff0000;
-      }
-    </style>
-    <script>
-      window.onload = function () {
-        function a(a, b) {
-          var c = /^(?:file):/,
-            d = new XMLHttpRequest(),
-            e = 0;
-          d.onreadystatechange = function () {
-            4 == d.readyState && (e = d.status),
-              c.test(location.href) && d.responseText && (e = 200),
-              4 == d.readyState && 200 == e && (a.outerHTML = d.responseText);
-          };
-          try {
-            d.open("GET", b, !0), d.send();
-          } catch (f) {}
-        }
-        var b,
-          c = document.getElementsByTagName("*");
-        for (b in c)
-          c[b].hasAttribute &&
-            c[b].hasAttribute("data-include") &&
-            a(c[b], c[b].getAttribute("data-include"));
-      };
-    </script>
-    <script>
-      const getCellValue = (tr, idx) =>
-        tr.children[idx].innerText || tr.children[idx].textContent;
-
-      const comparer = (idx, asc) => (a, b) =>
-        ((v1, v2) =>
-          v1 !== "" && v2 !== "" && !isNaN(v1) && !isNaN(v2)
-            ? v1 - v2
-            : v1.toString().localeCompare(v2))(
-          getCellValue(asc ? a : b, idx),
-          getCellValue(asc ? b : a, idx)
-        );
-
-      // do the work...
-      document.querySelectorAll("th").forEach((th) =>
-        th.addEventListener("click", () => {
-          const table = th.closest("table");
-          Array.from(table.querySelectorAll("tr:nth-child(n+2)"))
-            .sort(
-              comparer(
-                Array.from(th.parentNode.children).indexOf(th),
-                (this.asc = !this.asc)
-              )
-            )
-            .forEach((tr) => table.appendChild(tr));
-        })
-      );
-    </script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
   </head>
   <body>
-    <h2>Lenti.fr, le premier comparateur de lentilles de contact en ligne</h2>
+    <h1>Lenti.fr, le premier comparateur de lentilles de contact en ligne</h1>
     <p>100% objectif et gratuit</p>
-
-    <input
-      type="text"
-      id="myInput"
-      onkeyup="myFunction()"
-      placeholder="Cherchez un produit..."
-      title="Entrez un produit"
-    />
-
-    <select id="ProductsDropdown" oninput="filterTable()">
-      <option>All</option>
-      <option>Acuvue</option>
-      <option>Biomedics</option>
-      <option>Clariti</option>
-      <option>Dailies</option>
-      <option>Proclear</option>
-      <option>Soflens</option>
-    </select>
-
+    <div class="searchbar">
+      <input
+        type="text"
+        id="myInput"
+        onkeyup="myFunction()"
+        placeholder="Cherchez un produit..."
+        title="Entrez un produit"
+        class="search-input"
+      />
+    </div>
+    <div class="filter">
+      <h2 id ="FiltrerPar">Filtrer par marque:</h2>
+      <select id="ProductsDropdown" oninput="filterTable()">
+        <option>All</option>
+        <option>Acuvue</option>
+        <option>Biomedics</option>
+        <option>Clariti</option>
+        <option>Dailies</option>
+        <option>Proclear</option>
+        <option>Soflens</option>
+      </select>
+    </div>
     <p></p>
 
     <div data-include="data/ultime/ultime.html"></div>
-    <script>
-      function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
-            }
-          }
-        }
-      }
-    </script>
-
-    <script>
-      function filterTable() {
-        // Variables
-        let dropdown, table, rows, cells, country, filter;
-        dropdown = document.getElementById("ProductsDropdown");
-        table = document.getElementById("myTable");
-        rows = table.getElementsByTagName("tr");
-        filter = dropdown.value;
-
-        // Loops through rows and hides those with products that don't match the filter
-        for (let row of rows) {
-          // `for...of` loops through the NodeList
-          cells = row.getElementsByTagName("td");
-          country = cells[1] || null; // gets the 2nd `td` or nothing
-          // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
-          if (filter === "All" || !country || filter === country.textContent) {
-            row.style.display = ""; // shows this row
-          } else {
-            row.style.display = "none"; // hides this row
-          }
-        }
-      }
-    </script>
   </body>
 </html>
