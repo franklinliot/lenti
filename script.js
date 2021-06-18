@@ -104,3 +104,6 @@ const getCellValue = (tr, idx) =>
         }
       }
 
+
+jQuery("h1").fitText(0.38);
+

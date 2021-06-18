@@ -1,9 +1,9 @@
 # MVP conditions:
  
 ## Un site fonctionnel avec les 15 plus populaires produits de lentilles de contact journalières
-    - 1-Day Acuvue Moist 
-    - 1 Day Acuvue Moist for Astigmatism
-    - 1 Day Acuvue Moist Multifocal
+    - 1-Day Acuvue Moist DONE
+    - 1 Day Acuvue Moist for Astigmatism DONE
+    - 1 Day Acuvue Moist Multifocal DONE
     - Biomedics 1 Day Extra
     - Clariti 1 Day Multifocal
     - Dailies AquaComfort Plus
