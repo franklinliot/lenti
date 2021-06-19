@@ -8,52 +8,6 @@
   margin-bottom: 12px;
 }
 
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 18px;
-}
-
-#myTable th,
-#myTable td {
-  padding: 12px;
-}
-
-#myTable tr {
-  border-bottom: 1px solid #ddd;
-}
-
-#myTable tr.header,
-#myTable tr:hover {
-  background-color: #f1f1f1;
-}
-
-body {
-  font-family: "sans", Arial, sans-serif;
-  font-size: 75%;
-}
-
-h2 {
-  color: var(--heading-color);
-  font-size: 1.6em;
-  font-weight: normal;
-  line-height: 1.25em;
-  margin-bottom: 16px;
-}
-
-#myTable tr td:nth-child(2),
-#myTable tr td:nth-child(3),
-#myTable tr td:nth-child(4),
-#myTable tr td:nth-child(5),
-#myTable tr td:nth-child(6) {
-  text-align: center;
-}
-
-.cheapest {
-  background-color: rgba(7, 255, 7, 0.432);
-}
-
 .searchbar {
   display: flex;
   align-items: center;
@@ -66,6 +20,10 @@ h2 {
   width: 90%;
   font-size: 1.6rem;
   border-radius: 25px;
+}
+
+.cheapest {
+  background-color: rgba(7, 255, 7, 0.432);
 }
 
 .filter > * {
@@ -90,44 +48,43 @@ img {
   padding: 1rem;
 }
 
-h2
- {
-  text-align: center;
-  position: relative;  
+#Mytable {
+  display: flex;
 }
 
-.footer {
-  padding-top: 7px;
-  text-align: center;
+#myTable {
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
 }
 
-.headcol {
-  position: absolute;
-}
-
-@media only screen and (max-width: 600px) {
-  img {
-    max-width: 35%;
-    height: auto;
-    position: relative;
-    top: 0.25rem;
-    padding: 1rem;
-  }
-  .footer {
-      position: absolute;
-      left: 500px;
-  }
-
-}
-
-#myTable tr td:nth-child(1) {
-  max-width: 17.5%;
+#myTable th,
+#myTable td {
+  padding: 12px;
 }
 
 #myTable tr {
-text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header,
+#myTable tr:hover {
+  background-color: #f1f1f1;
 }
 
 body {
-  overflow-x: hidden;
+  font-family: "sans", Arial, sans-serif;
+}
+
+#myTable tr td:nth-child(1) {
+  flex: 1 0 300px;
+}
+
+#myTable tr td:nth-child(2),
+#myTable tr td:nth-child(3),
+#myTable tr td:nth-child(4),
+#myTable tr td:nth-child(5),
+#myTable tr td:nth-child(6) {
+  text-align: center;
+  flex: 0 0 auto;
 }
