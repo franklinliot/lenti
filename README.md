@@ -42,3 +42,5 @@ Situation au 18 juin 2021;
     - Automatiser la transformation de CSV vers HTML
         --> Trouver un moyen de remplacer automatiquement toutes les erreurs liées à la conversion CSV/HTML facilement
         --> DONE Trouver un moyen de faire exécuter tous les quatre fichiers en une fois
+
+--> Nouvelle fork: essayer de créer un tableau responsive avec Flexbox
