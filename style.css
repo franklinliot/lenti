@@ -26,9 +26,58 @@
   background-color: rgba(7, 255, 7, 0.432);
 }
 
-.filter > * {
-  display: inline-block;
+.cheapest{
+	animation: blinkingText 1.2s infinte;
 }
+
+@-webkit-keyframes cheapest {
+  0% { background-color: rgba(7, 255, 7, 0.432); }
+  50% { background-color: inherit; }
+  100% { background-color: rgba(7, 255, 7, 0.432); }
+
+}
+@-moz-keyframes cheapest {
+  0% { background-color: rgba(7, 255, 7, 0.432); }
+  50% { background-color: inherit; }
+  100% { background-color: rgba(7, 255, 7, 0.432); }
+
+}
+@-o-keyframes cheapest {
+  0% { background-color: rgba(7, 255, 7, 0.432); }
+  50% { background-color: inherit; }
+  100% { background-color: rgba(7, 255, 7, 0.432); }
+}
+
+@keyframes cheapest {
+  0% { background-color: rgba(7, 255, 7, 0.432); }
+  60% { background-color: inherit; }
+  100% { background-color: rgba(7, 255, 7, 0.432); }
+}
+.cheapest {
+  -webkit-animation: cheapest 1.8s ; /* Safari 4+ */
+  -moz-animation:    cheapest 1.8s ; /* Fx 5+ */
+  -o-animation:      cheapest 1.8s ; /* Opera 12+ */
+  animation:         cheapest 1.8s ; /* IE 10+ */
+}
+
+.LogoH3P {
+  flex-direction: column;
+  text-align: center;
+  }
+
+.LogoH3P {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.filter{
+  display: flex;
+  align-items: center;
+}
+
+
 
 #ProductsDropdown {
   width: 20%;
@@ -45,7 +94,7 @@ img {
   height: auto;
   position: relative;
   top: 0.25rem;
-  padding: 1rem;
+  padding: 3rem;
 }
 
 #Mytable {
@@ -87,4 +136,15 @@ body {
 #myTable tr td:nth-child(6) {
   text-align: center;
   flex: 0 0 auto;
+}
+
+
+.footer {
+  padding-top: 7px;
+  text-align: center;
+}
+
+html
+{
+  overflow-x: hidden;
 }

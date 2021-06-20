@@ -1,6 +1,6 @@
-# MVP conditions:
- 
-## Un site fonctionnel avec les 15 plus populaires produits de lentilles de contact journalières
+# Objectifs du projet:
+
+## Un site fonctionnel listant 20+ différentes lentilles de contact, notamment...
     - 1-Day Acuvue Moist DONE
     - 1 Day Acuvue Moist for Astigmatism DONE
     - 1 Day Acuvue Moist Multifocal DONE
@@ -15,15 +15,15 @@
     - SofLens Daily Disposable
 
 
-## Leurs prix pour au moins 5 revendeurs + lien pour les acheter
+## ... Avec leurs prix repectifs pour au moins 5 revendeurs ainsi que les liens pour les acheter...
     - LenStore
     - VisionDirect
     - LentillesMoinsCheres
     - MaLentille
     - OpticalDiscount
 
-## Highlight du meilleur prix pour chaque
 
+##... Mais aussi
 # Next steps
 - Réduire à 20 le nombre de produits
 - Prendre les colonnes correspondantes des 5 et les réunir dans un fichier unique
@@ -44,3 +44,9 @@ Situation au 18 juin 2021;
         --> DONE Trouver un moyen de faire exécuter tous les quatre fichiers en une fois
 
 --> Nouvelle fork: essayer de créer un tableau responsive avec Flexbox
+
+
+CleanCSVToHtml
+TOUT REUSSI à automatiser sauf
+- le fichier CSV en lui-même (+ figure out que faire en cas de trou)
+- la mise à jour régulière du script sur LWS
