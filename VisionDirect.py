@@ -4,7 +4,7 @@ import pandas as pd
 
 npo_jobs = {}
 jobs_no = 0
-Marque = ""
+MarqueVisionDirect = ""
 
 html_text = requests.get(
     "https://www.visiondirect.fr/lentilles-de-contact/lentilles-journalieres/").text
@@ -50,98 +50,90 @@ for job in jobs:
         nom_Produit = str.replace(nom_Produit, "plus", "Plus")
         nom_Produit = str.replace(nom_Produit, "Aquacomfort", "AquaComfort")
 
-    if (nom_Produit.find('Acuvue') != -1):
-        Marque = "Acuvue"
-    elif (nom_Produit.find('Biomedics') != -1):
-        Marque = "Biomedics"
-    elif (nom_Produit.find('Clariti') != -1):
-        Marque = "Clariti"
-    elif (nom_Produit.find('Dailies') != -1):
-        Marque = "Dailies"
-    elif (nom_Produit.find('Soflens') != -1):
-        Marque = "Soflens"
-    elif (nom_Produit.find('everClear') != -1):
-        Marque = "everClear"
-    elif (nom_Produit.find('Proclear') != -1):
-        Marque = "Proclear"
-    else:
-        Marque = "something else"
-
+    print (nom_Produit)
     nom_Produit = str(nom_Produit)
     if (nom_Produit.find('1-Day Acuvue Moist') != -1):
-        Marque = "Acuvue"
+        MarqueVisionDirect = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist for Astigmatism') != -1):
-        Marque = "Acuvue"
+        MarqueVisionDirect = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist Multifocal') != -1):
-        Marque = "Acuvue"
+        MarqueVisionDirect = "Acuvue"
     elif (nom_Produit.find('Biomedics') != -1 and id.find('12,99') != -1):
-        Marque = "Biomedics"
+        MarqueVisionDirect = "Biomedics"
+    elif (nom_Produit.find('Biotrue One Day for Astigmatism') != -1):
+        MarqueVisionDirect = "Biotrue"
     elif (nom_Produit.find('Clariti 1-Day multifocal') != -1):
-        Marque = "Clariti"
+        MarqueVisionDirect = "Clariti"
     elif (nom_Produit.find('Dailies AquaComfort Plus') != -1):
-        Marque = "Dailies"
+        MarqueVisionDirect = "Dailies"
     elif (nom_Produit.find('Dailies All Day Comfort') != -1):
-        Marque = "Dailies"
+        MarqueVisionDirect = "Dailies"
     elif (nom_Produit.find('Dailies AquaComfort Plus Toric') != -1):
-        Marque = "Dailies"
+        MarqueVisionDirect = "Dailies"
     elif (nom_Produit.find('Dailies AquaComfort Plus Multifocal') != -1):
-        Marque = "Dailies"
+        MarqueVisionDirect = "Dailies"
     elif (nom_Produit.find('Dailies Total 1 Multifocal') != -1):
-        Marque = "Dailies"
+        MarqueVisionDirect = "Dailies"
+    elif (nom_Produit.find('MyDay') != -1 and id.find("19,49") != -1):
+        MarqueVisionDirect = "MyDay"
     elif (nom_Produit.find('Proclear 1-Day Multifocal') != -1):
-        Marque = "something else"
+        MarqueVisionDirect = "something else"
     elif (nom_Produit.find('Proclear 1-Day') != -1):
-        Marque = "Proclear"
+        MarqueVisionDirect = "Proclear"
     elif (nom_Produit.find('SofLens Daily for Astigmatism') != -1):
-        Marque = "something else"
+        MarqueVisionDirect = "something else"
     elif (nom_Produit.find('SofLens Daily') != -1):
-        Marque = "Soflens"
+        MarqueVisionDirect = "Soflens"
     else:
-        Marque = "something else"
+        MarqueVisionDirect = "something else"
 
     lienAchatVisionDirect = job.a['href']
 
     jobs_no += 1
-    npo_jobs[jobs_no] = [nom_Produit, Marque,
+    npo_jobs[jobs_no] = [nom_Produit, MarqueVisionDirect,
                          id, lienAchatVisionDirect]
 
 # Définir les colonnes du dataframe
 df4 = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
-    'nom_Produit', 'Marque', 'Vision Direct', 'lienAchatVisionDirect'])
+    'nom_Produit', 'MarqueVisionDirect', 'Vision Direct', 'lienAchatVisionDirect'])
 
 # Clean le Vision Direct
+'''
 df4['Vision Direct'] = df4['Vision Direct'].str.replace("€", "")
 df4['Vision Direct'] = df4['Vision Direct'].str.strip()
 df4['Vision Direct'] = df4['Vision Direct'].str.slice(start=-5)
+'''
 
 df4['nom_Produit'] = df4['nom_Produit'].str.replace('ACUVUE', 'Acuvue')
 
 # Rendre les liens cliquables pour
-
-
 def make_clickable(lienAchatVisionDirect, id):
     return '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(lienAchatVisionDirect, id)
+
 
 
 df4['Vision Direct'] = df4.apply(lambda x: make_clickable(
     x['lienAchatVisionDirect'], x['Vision Direct']), axis=1)
 
 # Cache la colonne lienAchatVisionDirect
-df4 = df4[['nom_Produit', 'Marque', 'Vision Direct']]
+df4 = df4[['nom_Produit', 'MarqueVisionDirect', 'Vision Direct']]
 
-df4 = df4.sort_values('nom_Produit')
+# new_rowBiotrueMyday = {'nom_Produit': 'Myday', 'MarqueVisionDirect': 'Myday', 'Vision Direct': '/'}
+# df4 = df4.append(new_rowBiotrueMyday, ignore_index=True)
 
 # Cacher les something else
-df4 = df4[~df4['Marque'].str.contains("something else")]
+df4 = df4[~df4['MarqueVisionDirect'].str.contains("something else")]
 
 df4 = df4[~df4['nom_Produit'].str.contains("90L")]
 df4 = df4[~df4['nom_Produit'].str.contains("180L")]
 df4 = df4[~df4['nom_Produit'].str.contains("90")]
 
+
+
+
+
 df4 = df4.sort_values('nom_Produit')
-df4.rename(columns={'nom_Produit': 'Nom Produit'}, inplace=True)
-
-
+df4.rename(columns={'nom_Produit': 'NomProduitVisionDirect'}, inplace=True)
 
 df_products = pd.DataFrame.from_dict(df4)
 df_products = df_products.to_html(

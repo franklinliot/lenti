@@ -37,7 +37,7 @@ window.onload = function () {
       cells = row.getElementsByTagName("td");
       country = cells[1] || null; // gets the 2nd `td` or nothing
       // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
-      if (filter === "All" || !country || filter === country.textContent) {
+      if (filter === "Toutes" || !country || filter === country.textContent) {
         row.style.display = ""; // shows this row
       } else {
         row.style.display = "none"; // hides this row
@@ -107,3 +107,28 @@ const getCellValue = (tr, idx) =>
 
 jQuery("h1").fitText(0.38);
 
+
+
+
+
+// Event snippet for Website traffic conversion page
+gtag('event', 'conversion', {
+  'send_to': 'AW-993124191/BU_ICOSZkcYCEN--x9kD'
+});
+
+
+// Global site tag (gtag.js) - Google Ads: 993124191
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'AW-993124191');
+
+
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'G-JLTNVNHXBW');

@@ -1,129 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Index LMoins Cheres</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
 
-      #myInput {
-        background-image: url("/css/searchicon.png");
-        background-position: 10px 10px;
-        background-repeat: no-repeat;
-        width: 100%;
-        font-size: 16px;
-        padding: 12px 20px 12px 40px;
-        border: 1px solid #ddd;
-        margin-bottom: 12px;
-      }
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
 
-      #myTable {
-        border-collapse: collapse;
-        width: 100%;
-        border: 1px solid #ddd;
-        font-size: 18px;
-      }
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
 
-      #myTable th,
-      #myTable td {
-        text-align: left;
-        padding: 12px;
-      }
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLTNVNHXBW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-      #myTable tr {
-        border-bottom: 1px solid #ddd;
-      }
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-      #myTable tr.header,
-      #myTable tr:hover {
-        background-color: #f1f1f1;
-      }
-    </style>
-    <script>
-      window.onload = function () {
-        function a(a, b) {
-          var c = /^(?:file):/,
-            d = new XMLHttpRequest(),
-            e = 0;
-          d.onreadystatechange = function () {
-            4 == d.readyState && (e = d.status),
-              c.test(location.href) && d.responseText && (e = 200),
-              4 == d.readyState && 200 == e && (a.outerHTML = d.responseText);
-          };
-          try {
-            d.open("GET", b, !0), d.send();
-          } catch (f) {}
-        }
-        var b,
-          c = document.getElementsByTagName("*");
-        for (b in c)
-          c[b].hasAttribute &&
-            c[b].hasAttribute("data-include") &&
-            a(c[b], c[b].getAttribute("data-include"));
-      };
-    </script>
-    <script>
-      const getCellValue = (tr, idx) =>
-        tr.children[idx].innerText || tr.children[idx].textContent;
+    gtag('config', 'G-JLTNVNHXBW');
+  </script>
 
-      const comparer = (idx, asc) => (a, b) =>
-        ((v1, v2) =>
-          v1 !== "" && v2 !== "" && !isNaN(v1) && !isNaN(v2)
-            ? v1 - v2
-            : v1.toString().localeCompare(v2))(
-          getCellValue(asc ? a : b, idx),
-          getCellValue(asc ? b : a, idx)
-        );
+  <!-- Global site tag (gtag.js) - Google Ads: 993124191 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993124191"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-      // do the work...
-      document.querySelectorAll("th").forEach((th) =>
-        th.addEventListener("click", () => {
-          const table = th.closest("table");
-          Array.from(table.querySelectorAll("tr:nth-child(n+2)"))
-            .sort(
-              comparer(
-                Array.from(th.parentNode.children).indexOf(th),
-                (this.asc = !this.asc)
-              )
-            )
-            .forEach((tr) => table.appendChild(tr));
-        })
-      );
-    </script>
-  </head>
-  <body>
-    <h2>Index LMoinsCheres</h2>
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
 
-    <input
-      type="text"
-      id="myInput"
-      onkeyup="myFunction()"
-      placeholder="Search for names.."
-      title="Type in a name"
-    />
+    gtag('config', 'AW-993124191');
+  </script>
 
-    <div data-include="data/LentMCheres/LentMCheres.html"></div>
-    <script>
-      function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
-            }
-          }
-        }
-      }
-    </script>
-  </body>
+  <!-- Event snippet for Website traffic conversion page -->
+  <script>
+    gtag('event', 'conversion', {
+      'send_to': 'AW-993124191/BU_ICOSZkcYCEN--x9kD'
+    });
+  </script>
+
+  <title>INDEX LENTILLES MOINS CHERES</title>
+</head>
+
+<body>
+  <div class="LogoH3P">
+    <img src="images/LogoEtTexte.png"></img>
+    <div class="H3P">
+      <h3>Le premier comparateur de prix pour vos lentilles de contact.</h3>
+      <p>Sélectionnez vos lentilles de contact et achetez-les au meilleur prix grâce à Lenti.fr. Service transparent et
+        non-biaisé. Aucune de vos données personelles ne sont récupérées pendant la commande.</p>
+    </div>
+  </div>
+  <div class="searchbar">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cherchez un produit..."
+      title="Entrez un produit" class="search-input" />
+  </div>
+  <div class="filter">indexLenStore
+    <h2 id="FiltrerPar">Filtrer par marque:</h2>
+    <select id="ProductsDropdown" oninput="filterTable()">
+      <option>Toutes</option>
+      <option>Acuvue</option>
+      <option>Biomedics</option>
+      <option>Clariti</option>
+      <option>Dailies</option>
+      <option>Proclear</option>
+      <option>Soflens</option>
+    </select>
+  </div>
+  <p></p>
+
+  <div data-include="data/LentMCheres/LentMCheres.html"></div>
+
+  <footer class="footer">
+    <p>Codé et hébergé en France. © Franklin Liot. <a class="footer-link"
+        href="mailto:franklin.liot@outlook.com">Contact</a></p>
+  </footer>
+</body>
+
 </html>

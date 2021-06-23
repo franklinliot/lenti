@@ -4,7 +4,7 @@ import pandas as pd
 
 npo_jobs = {}
 jobs_no = 0
-Marque =""
+MarqueMaLentille =""
 
 html_text = requests.get("https://www.malentille.com/36-journaliere-36").text
 soup = BeautifulSoup(html_text, 'lxml')
@@ -48,73 +48,59 @@ for job in jobs:
         nom_Produit = str.replace(nom_Produit, "Aquacomfort", "AquaComfort")
 
 
-
-
-
-    if (nom_Produit.find('Acuvue') != -1):
-        Marque = "Acuvue"
-    elif (nom_Produit.find('Biomedics') != -1):
-        Marque = "Biomedics"
-    elif (nom_Produit.find('Clariti') != -1):
-        Marque = "Clariti"
-    elif (nom_Produit.find('Dailies') != -1):
-        Marque = "Dailies"
-    elif (nom_Produit.find('Soflens') != -1):
-        Marque = "Soflens"
-    elif (nom_Produit.find('everClear') != -1):
-        Marque = "everClear"
-    elif (nom_Produit.find('Proclear') != -1):
-        Marque = "Proclear"
-    else:
-        Marque = "something else"
-    
+    print (nom_Produit)    
     nom_Produit = str(nom_Produit)
     if (nom_Produit.find('1-Day Acuvue Moist') != -1):
-        Marque = "Acuvue"
+        MarqueMaLentille = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist for Astigmatism') != -1):
-        Marque = "Acuvue"
+        MarqueMaLentille = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist Multifocal') != -1):
-        Marque = "Acuvue"
+        MarqueMaLentille = "Acuvue"
     elif (nom_Produit.find('Biomedics 1 Day Extra') != -1):
-        Marque = "Biomedics"
+        MarqueMaLentille = "Biomedics"
+    elif (nom_Produit.find('Biotrue') != -1):
+        MarqueLenStore = "Biotrue"
     elif (nom_Produit.find('Clariti 1 Day multifocal') != -1):
-        Marque = "Clariti"
+        MarqueMaLentille = "Clariti"
     elif (nom_Produit.find('Dailies AquaComfort Plus') != -1):
-        Marque = "Dailies"
+        MarqueMaLentille = "Dailies"
     elif (nom_Produit.find('Dailies All Day Comfort') != -1):
-        Marque = "Dailies"
+        MarqueMaLentille = "Dailies"
     elif (nom_Produit.find('Dailies AquaComfort Plus Toric') != -1):
-        Marque = "Dailies"
+        MarqueMaLentille = "Dailies"
     elif (nom_Produit.find('Dailies AquaComfort Plus Multifocal') != -1):
-        Marque = "Dailies"
+        MarqueMaLentille = "Dailies"
     elif (nom_Produit.find('Dailies Total 1 Multifocal') != -1):
-        Marque = "Dailies"
+        MarqueMaLentille = "Dailies"
+    elif (nom_Produit.find('MyDayL') != -1):
+        MarqueMaLentille = "MyDay"
     elif (nom_Produit.find('Proclear 1-Day Multifocal') != -1):
-        Marque = "something else"
+        MarqueMaLentille = "something else"
     elif (nom_Produit.find('Proclear 1-Day') != -1):
-        Marque = "Proclear"
+        MarqueMaLentille = "Proclear"
     elif (nom_Produit.find('SofLens daily disposable pour Astigmates') != -1):
-        Marque = "something else"
+        MarqueMaLentille = "something else"
     elif (nom_Produit.find('Soflens Daily DisposableL') != -1):
-        Marque = "Soflens"
+        MarqueMaLentille = "Soflens"
     else:
-        Marque = "something else"
+        MarqueMaLentille = "something else"
     
 
     lienAchatMaLentille = job.h3.a['href']
     jobs_no += 1
-    npo_jobs[jobs_no] = [nom_Produit, Marque, 
+    npo_jobs[jobs_no] = [nom_Produit, MarqueMaLentille, 
                          id, lienAchatMaLentille]
 
 #Définir les colonnes du dataframe
 df3 = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
-     'nom_Produit', 'Marque','Ma Lentille', 'lienAchatMaLentille'])
+     'nom_Produit', 'MarqueMaLentille','Ma Lentille', 'lienAchatMaLentille'])
 
 #Clean le Ma Lentille
+'''
 df3['Ma Lentille'] = df3['Ma Lentille'].str.replace("€", "")
 df3['Ma Lentille'] = df3['Ma Lentille'].str.strip()
 df3['Ma Lentille'] = df3['Ma Lentille'].str.slice(start=-5)
-
+'''
 df3['nom_Produit'] = df3['nom_Produit'].str.replace('ACUVUE', 'Acuvue')
 
 # Rendre les liens cliquables pour
@@ -126,20 +112,31 @@ df3['Ma Lentille'] = df3.apply(lambda x: make_clickable(
     x['lienAchatMaLentille'], x['Ma Lentille']), axis=1)
 
 # Cache la colonne lienAchatMaLentille
-df3 = df3[['nom_Produit', 'Marque',  'Ma Lentille']]
+df3 = df3[['nom_Produit', 'MarqueMaLentille',  'Ma Lentille']]
+
+new_rowBiotrueAstig = {'nom_Produit': 'Biotrue ONEday for Astigmatism', 'MarqueMaLentille': 'Biotrue', 'Ma Lentille': '/'}
+df3 = df3.append(new_rowBiotrueAstig, ignore_index=True)
+# new_rowBiotrueAstig = {'nom_Produit': 'Myday', 'MarqueMaLentille': 'Myday', 'Ma Lentille': '/'}
+# df3 = df3.append(new_rowBiotrueAstig, ignore_index=True)
 
 df3 = df3.sort_values('nom_Produit')
 
 #Cacher les something else
-df3 = df3[~df3['Marque'].str.contains("something else")]
+df3 = df3[~df3['MarqueMaLentille'].str.contains("something else")]
 
 df3 = df3[~df3['nom_Produit'].str.contains("90L")]
 df3 = df3[~df3['nom_Produit'].str.contains("180L")]
 df3 = df3[~df3['nom_Produit'].str.contains("90")]
 
 
-df3.rename(columns={'nom_Produit': 'Nom Produit'}, inplace=True)
+df3.rename(columns={'nom_Produit': 'NomProduitMaLentille'}, inplace=True)
 
+new_rowBiomedics = {'NomProduitMaLentille': 'Biomedics 1-Day Extra', 'MarqueMaLentille': 'Biomedics', 'Ma Lentille': '/'}
+new_rowClariti = {'NomProduitMaLentille': 'Clariti 1-Day multifocal', 'MarqueMaLentille': 'Clariti', 'Ma Lentille': '/'}
+df3 = df3.append(new_rowBiomedics, ignore_index=True)
+df3 = df3.append(new_rowClariti, ignore_index=True)
+
+df3 = df3.sort_values('NomProduitMaLentille')
 
 df_products = pd.DataFrame.from_dict(df3)
 df_products = df_products.to_html(table_id="sellers_table-id", render_links=True, escape=False, index=False)
@@ -160,4 +157,6 @@ a_file = open(
 a_file.writelines(list_of_lines)
 a_file.close()
 
-df3.to_csv(r'data/MaLentille/MaLentille.csv', index=False)
+df3.to_csv(r'/home/franklin/coding/lenti/data/MaLentille/MaLentille.csv', index=False)
+
+

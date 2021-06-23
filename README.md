@@ -18,35 +18,14 @@
 ## ... Avec leurs prix repectifs pour au moins 5 revendeurs ainsi que les liens pour les acheter...
     - LenStore
     - VisionDirect
+    - Lentiamo
     - LentillesMoinsCheres
     - MaLentille
     - OpticalDiscount
 
 
-##... Mais aussi
-# Next steps
-- Réduire à 20 le nombre de produits
-- Prendre les colonnes correspondantes des 5 et les réunir dans un fichier unique
-        - DONE LenStore
-        - DONE VisionDirect
-        - DONE LentillesMoinsCheres 
-        - DONE MaLentille
-        - OpticalDiscount
-
-Situation au 18 juin 2021;
-- Une première version du site est fonctionelle
-- Prochains objectifs:
-    - Freeze une colonne + améliorer responsiveness du site sur les téléphones
-    - Highlight en vert les cellules avec les prix les moins chers
-    - Rendre plus visible les colonnes "revendeurs" des colonnes marque et nom produit
-    - Automatiser la transformation de CSV vers HTML
-        --> Trouver un moyen de remplacer automatiquement toutes les erreurs liées à la conversion CSV/HTML facilement
-        --> DONE Trouver un moyen de faire exécuter tous les quatre fichiers en une fois
-
---> Nouvelle fork: essayer de créer un tableau responsive avec Flexbox
-
-
-CleanCSVToHtml
-TOUT REUSSI à automatiser sauf
-- le fichier CSV en lui-même (+ figure out que faire en cas de trou)
-- la mise à jour régulière du script sur LWS
+## ... Mais aussi: à faire ensuite
+- Freeze 1ère colonne + améliorer responsiveness du site sur les téléphones
+- Rendre plus visible les colonnes "revendeurs" des colonnes marque et nom produit
+- Intégrer les boîtes de 90
+- Intégrer lentilles journalières, hebdos, mensuelles...

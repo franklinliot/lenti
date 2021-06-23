@@ -18,72 +18,82 @@ for job in jobs:
     nom_Produit = nomProduit.text.replace(
         "1 Day", "1-Day").replace("MOIST", "Moist").replace("OASYS", "Oasys").strip()
 
+
     if (nom_Produit.find('ACUVUE') != -1):
         nom_Produit = str.replace(nom_Produit, "ACUVUE", "Acuvue")
     elif (nom_Produit.find('DAILIES') != -1):
         nom_Produit = str.replace(nom_Produit, "DAILIES", "Dailies")
     elif (nom_Produit.find('1 Day') != -1):
         nom_Produit = str.replace(nom_Produit, "1 Day", "1-Day")
-
+    
     if (nom_Produit.find('Acuvue') != -1 or nom_Produit.find('ACUVUE') != -1):
-        Marque = "Acuvue"
+        MarqueLenStore = "Acuvue"
     elif (nom_Produit.find('Biomedics') != -1):
-        Marque = "Biomedics"
+        MarqueLenStore = "Biomedics"
+    elif (nom_Produit.find('Biotrue') != -1):
+        MarqueLenStore = "Biotrue"
     elif (nom_Produit.find('Clariti') != -1):
-        Marque = "Clariti"
+        MarqueLenStore = "Clariti"
+    elif (nom_Produit.find('MyDay') != -1):
+        MarqueLenStore = "MyDay"
     elif (nom_Produit.find('Dailies') != -1):
-        Marque = "Dailies"
+        MarqueLenStore = "Dailies"
     elif (nom_Produit.find('Soflens') != -1):
-        Marque = "Soflens"
+        MarqueLenStore = "Soflens"
     elif (nom_Produit.find('everClear') != -1):
-        Marque = "everClear"
+        MarqueLenStore = "everClear"
     elif (nom_Produit.find('Proclear') != -1):
-        Marque = "Proclear"
+        MarqueLenStore = "Proclear"
     else:
-        Marque = "something else"
+        MarqueLenStore = "something else"
 
     LenStore = job.find("span", class_="u-price")
     LenStore = str(LenStore)
-
-    print (nom_Produit)
     
+    print (nom_Produit)
     if (nom_Produit.find('1-Day Acuvue Moist') != -1 and LenStore.find('16,49') != -1):
-        Marque = "Acuvue"
+        MarqueLenStore = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist for Astigmatism') != -1):
-        Marque = "Acuvue"
+        MarqueLenStore = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist Multifocal') != -1):
-        Marque = "Acuvue"
+        MarqueLenStore = "Acuvue"
     elif (nom_Produit.find('Biomedics 1-Day Extra') != -1 and LenStore.find('12,19€') != -1):
-        Marque = "Biomedics"
+        MarqueLenStore = "Biomedics"
+    elif (nom_Produit.find('Biotrue ONEday for Astigmatism') != -1):
+        MarqueLenStore = "Biotrue"
     elif (nom_Produit.find('Clariti 1-Day Multifocal') != -1):
-        Marque = "Clariti"
+        MarqueLenStore = "Clariti"
     elif (nom_Produit.find('Dailies AquaComfort Plus Toric') != -1):
-        Marque = "Dailies"
+        MarqueLenStore = "Dailies"
     elif (nom_Produit.find('Dailies AquaComfort Plus') != -1 and LenStore.find('16,19€') != -1):
-        Marque = "Dailies"
+        MarqueLenStore = "Dailies"
     elif (nom_Produit.find('Dailies AquaComfort Plus Multifocal') != -1):
-        Marque = "Dailies"
+        MarqueLenStore = "Dailies"
     elif (nom_Produit.find('Dailies Total 1 Multifocal') != -1):
-        Marque = "Dailies"
+        MarqueLenStore = "Dailies"
     elif (nom_Produit.find('Focus Dailies All Day Comfort') != -1 and LenStore.find('15,59€') != -1):
-        Marque = "Dailies"
+        MarqueLenStore = "Dailies"
         nom_Produit = 'Dailies All Day Comfort'
+    elif (nom_Produit.find('Biomedics 1-Day Extra') != -1 and LenStore.find('12,19€') != -1):
+        MarqueLenStore = "Biomedics"
+    elif (nom_Produit.find('MyDay') != -1 and LenStore.find('22,29') != -1):
+        MarqueLenStore = "MyDay"
     elif (nom_Produit.find('Proclear 1-Day') != -1 and LenStore.find('13,29€') != -1):
-        Marque = "Proclear"
+        MarqueLenStore = "Proclear"
     elif (nom_Produit.find('Soflens Daily Disposable') != -1 and LenStore.find('11,09€') != -1):
-        Marque = "Soflens"
+        MarqueLenStore = "Soflens"
     else:
-        Marque = "something else"
+        MarqueLenStore = "something else"
 
     lienAchatLenStore = job.h3.a['href']
     jobs_no += 1
-    npo_jobs[jobs_no] = [nom_Produit, Marque, 
+    npo_jobs[jobs_no] = [nom_Produit, MarqueLenStore, 
                          LenStore, lienAchatLenStore]
 
 
 # Définir les colonnes du dataframe
 df2 = pd.DataFrame.from_dict(npo_jobs, orient='index', columns=[
-     'nom_Produit', 'Marque', 'LenStore', 'lienAchatLenStore'])
+     'nom_Produit', 'MarqueLenStore', 'LenStore', 'lienAchatLenStore'])
 
 df2['nom_Produit'] = df2['nom_Produit'].str.replace('ACUVUE', 'Acuvue')
 
@@ -98,17 +108,21 @@ def make_clickable(lienAchatLenStore, id):
 df2['LenStore'] = df2.apply(lambda x: make_clickable(
     x['lienAchatLenStore'], x['LenStore']), axis=1)
 
-df2['LenStore'] = df2['LenStore'].str.replace("€", "")
+df2['LenStore'] = df2['LenStore'].str.replace("€", " €")
 
 # Cache la colonne lienAchatLenStore
-df2 = df2[['nom_Produit', 'Marque',  'LenStore']]
+df2 = df2[['nom_Produit', 'MarqueLenStore',  'LenStore']]
+
+# new_rowBiotrueMyDay = {'nom_Produit': 'MyDay', 'MarqueLenStore': 'MyDay', 'LenStore': '/'}
+# df2 = df2.append(new_rowBiotrueMyDay, ignore_index=True)
+
 
 df2 = df2.sort_values('nom_Produit')
 
-df2.rename(columns={'nom_Produit': 'Nom Produit'}, inplace=True)
+df2.rename(columns={'nom_Produit': 'NomProduitLenStore'}, inplace=True)
 
 # Drop les something else
-df2 = df2[~df2['Marque'].str.contains("something else")]
+df2 = df2[~df2['MarqueLenStore'].str.contains("something else")]
 
 df_products = pd.DataFrame.from_dict(df2)
 

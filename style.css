@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 98%;
   padding: 1rem;
 }
 
@@ -32,51 +32,50 @@
 
 @-webkit-keyframes cheapest {
   0% { background-color: rgba(7, 255, 7, 0.432); }
-  50% { background-color: inherit; }
+  25% { background-color: inherit; }
+  50% { background-color: rgba(7, 255, 7, 0.432); }
+  75% { background-color: inherit; }
   100% { background-color: rgba(7, 255, 7, 0.432); }
 
 }
 @-moz-keyframes cheapest {
   0% { background-color: rgba(7, 255, 7, 0.432); }
-  50% { background-color: inherit; }
+  25% { background-color: inherit; }
+  50% { background-color: rgba(7, 255, 7, 0.432); }
+  75% { background-color: inherit; }
   100% { background-color: rgba(7, 255, 7, 0.432); }
 
 }
 @-o-keyframes cheapest {
   0% { background-color: rgba(7, 255, 7, 0.432); }
-  50% { background-color: inherit; }
+  25% { background-color: inherit; }
+  50% { background-color: rgba(7, 255, 7, 0.432); }
+  75% { background-color: inherit; }
   100% { background-color: rgba(7, 255, 7, 0.432); }
 }
 
 @keyframes cheapest {
   0% { background-color: rgba(7, 255, 7, 0.432); }
-  60% { background-color: inherit; }
+  25% { background-color: inherit; }
+  50% { background-color: rgba(7, 255, 7, 0.432); }
+  75% { background-color: inherit; }
   100% { background-color: rgba(7, 255, 7, 0.432); }
 }
 .cheapest {
-  -webkit-animation: cheapest 1.8s ; /* Safari 4+ */
-  -moz-animation:    cheapest 1.8s ; /* Fx 5+ */
-  -o-animation:      cheapest 1.8s ; /* Opera 12+ */
-  animation:         cheapest 1.8s ; /* IE 10+ */
+  -webkit-animation: cheapest 1.5s ; /* Safari 4+ */
+  -moz-animation:    cheapest 1.5s ; /* Fx 5+ */
+  -o-animation:      cheapest 1.5s ; /* Opera 12+ */
+  animation:         cheapest 1.5s ; /* IE 10+ */
 }
 
 .LogoH3P {
   flex-direction: column;
   text-align: center;
-  }
-
-.LogoH3P {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-}
-
-.filter{
-  display: flex;
-  align-items: center;
-}
-
+  }
 
 
 #ProductsDropdown {
@@ -87,6 +86,8 @@
 
 #FiltrerPar {
   padding-right: 1rem;
+  position: relative;
+  top: -.8rem;
 }
 
 img {
@@ -105,6 +106,8 @@ img {
   width: 100%;
   border: 1px solid #ddd;
   font-size: 18px;
+  position: relative;
+  top: -1rem;
 }
 
 #myTable th,
@@ -133,7 +136,8 @@ body {
 #myTable tr td:nth-child(3),
 #myTable tr td:nth-child(4),
 #myTable tr td:nth-child(5),
-#myTable tr td:nth-child(6) {
+#myTable tr td:nth-child(6),
+#myTable tr td:nth-child(7){
   text-align: center;
   flex: 0 0 auto;
 }
@@ -142,9 +146,27 @@ body {
 .footer {
   padding-top: 7px;
   text-align: center;
+  position: relative;
+  top: -1rem;
 }
 
-html
-{
-  overflow-x: hidden;
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+
+.filter select{
+position: relative;
+top: -.8rem;
+}
+
+.filter p{
+  position: relative;
+  top: -.8rem;
+  left: 1rem;
+  font-style: italic;
+  }
