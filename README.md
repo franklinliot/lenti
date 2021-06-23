@@ -15,7 +15,7 @@
     - SofLens Daily Disposable
 
 
-## ... Avec leurs prix repectifs pour au moins 5 revendeurs ainsi que les liens pour les acheter...
+## ... Avec prix respectifs + liens pour au moins 5 revendeurs...
     - LenStore
     - VisionDirect
     - Lentiamo
