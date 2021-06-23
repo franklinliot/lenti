@@ -30,7 +30,6 @@ for job in jobs:
         nom_Produit = str.replace(nom_Produit, "DAILIES", "Dailies")
 
 
-    print (nom_Produit)
     nom_Produit = str(nom_Produit)
     if (nom_Produit.find('1-Day Acuvue Moist') != -1):
         MarqueLMC = "Acuvue"

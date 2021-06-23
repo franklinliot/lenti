@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+from replace import *
 
 npo_jobs = {}
 jobs_no = 0
@@ -17,40 +18,17 @@ for job in jobs:
     nom_Produit = nomProduit.text.replace("</a>", "")
     nom_Produit = nomProduit.text.replace(
         "1 Day", "1-Day").replace("MOIST", "Moist").replace("OASYS", "Oasys").strip()
-
-
+    
     if (nom_Produit.find('ACUVUE') != -1):
         nom_Produit = str.replace(nom_Produit, "ACUVUE", "Acuvue")
     elif (nom_Produit.find('DAILIES') != -1):
         nom_Produit = str.replace(nom_Produit, "DAILIES", "Dailies")
     elif (nom_Produit.find('1 Day') != -1):
         nom_Produit = str.replace(nom_Produit, "1 Day", "1-Day")
-    
-    if (nom_Produit.find('Acuvue') != -1 or nom_Produit.find('ACUVUE') != -1):
-        MarqueLenStore = "Acuvue"
-    elif (nom_Produit.find('Biomedics') != -1):
-        MarqueLenStore = "Biomedics"
-    elif (nom_Produit.find('Biotrue') != -1):
-        MarqueLenStore = "Biotrue"
-    elif (nom_Produit.find('Clariti') != -1):
-        MarqueLenStore = "Clariti"
-    elif (nom_Produit.find('MyDay') != -1):
-        MarqueLenStore = "MyDay"
-    elif (nom_Produit.find('Dailies') != -1):
-        MarqueLenStore = "Dailies"
-    elif (nom_Produit.find('Soflens') != -1):
-        MarqueLenStore = "Soflens"
-    elif (nom_Produit.find('everClear') != -1):
-        MarqueLenStore = "everClear"
-    elif (nom_Produit.find('Proclear') != -1):
-        MarqueLenStore = "Proclear"
-    else:
-        MarqueLenStore = "something else"
 
     LenStore = job.find("span", class_="u-price")
     LenStore = str(LenStore)
     
-    print (nom_Produit)
     if (nom_Produit.find('1-Day Acuvue Moist') != -1 and LenStore.find('16,49') != -1):
         MarqueLenStore = "Acuvue"
     elif (nom_Produit.find('1-Day Acuvue Moist for Astigmatism') != -1):
