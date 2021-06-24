@@ -1,10 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+from PIL import Image
 
 npo_jobs = {}
 jobs_no = 0
-Colors = ["Acuvue Oasys with Hydraclear Plus", "Acuvue Oasys 12 with Hydraclear Plus"]
 
 html_text = requests.get(
     "https://www.lentillesmoinscheres.com/lentilles-de-contact/journalieres/").text
@@ -68,6 +68,8 @@ for job in jobs:
     
 
     lienAchatLMC = "https://www.lentillesmoinscheres.com" + job.h3.a['href']
+    
+
     jobs_no += 1
     npo_jobs[jobs_no] = [nom_Produit,MarqueLMC, 
                          id, lienAchatLMC]

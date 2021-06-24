@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JLTNVNHXBW"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-993124191"></script>
+
+  <title>Lenti.fr - Comparateur de prix de lentilles de contact.</title>
+</head>
+
+<body>
+  <div class="LogoH3P">
+    <img src="images/LogoEtTexte.png"></img>
+    <div class="H3P">
+      <h3>Le premier comparateur de prix pour vos lentilles de contact. </h3>
+      <p>Sélectionnez vos lentilles de contact et achetez-les au meilleur prix grâce à Lenti.fr. Service gratuit, transparent et mis-à-jour en temps réel. Aucune de vos données personelles ne sont récupérées pendant la commande.</p>
+    </div>
+  </div>
+  <div class="searchbar">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cherchez un produit..."
+      title="Entrez un produit" class="search-input" />
+  </div>
+  <div class="filter">
+    <h2 id="FiltrerPar">Filtrer par marque:</h2>
+    <select id="ProductsDropdown" oninput="filterTable()">
+      <option>Toutes</option>
+      <option>Acuvue</option>
+      <option>Biomedics</option>
+      <option>Biotrue</option>
+      <option>Clariti</option>
+      <option>Dailies</option>
+      <option>MyDay</option>
+      <option>Proclear</option>
+      <option>Soflens</option>
+    </select>
+    <p>Tous les prix affichés sont par boîte de 30 lentilles journalières.</p>
+  </div>
+
+
+  <div data-include="data/ultime/CleanTable.html"></div>
+
+  <footer class="footer">
+    <p>Codé et hébergé en France. © Franklin Liot. <a class="footer-link"
+        href="https://www.linkedin.com/in/franklinliot/">Contact</a></p>
+    <p>Collaborez et partagez vos suggestions en visitant <a href="https://github.com/franklinliot/lenti">le repo</a>.</p>
+  </footer>
+</body>
+
+</html>
