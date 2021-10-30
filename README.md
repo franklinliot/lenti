@@ -25,6 +25,8 @@
     - MaLentille
     - OpticalDiscount
 
+## Idées
+Trouver un moyen de retourner les résultats du scrape dans un tableau SQL
 
 ## ... Mais aussi: à faire ensuite
 - Freeze 1ère colonne + améliorer responsiveness du site sur les téléphones
